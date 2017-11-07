@@ -1,0 +1,8 @@
+open some-domain
+some-FTP-username
+some-FTP-password
+binary
+cd /remember/
+get comments.txt
+disconnect
+quit

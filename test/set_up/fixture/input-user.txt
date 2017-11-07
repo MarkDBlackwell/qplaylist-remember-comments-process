@@ -1,0 +1,9 @@
+some-domain
+some-FTP-username
+some-FTP-password
+email-daemon@example.com
+email-daemon-password
+some-schedule-file-path
+
+
+

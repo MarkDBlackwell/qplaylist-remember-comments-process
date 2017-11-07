@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+
+=begin
+Email comments, for Qplaylist Remember Songs Comments Process
+
+Author: Mark D. Blackwell (google me)
+mdb March 20, 2018 - created
+=end
+
+require_relative '../etc/methods'
+
+include ::Methods
+
+# Don't greet.
+
+# Navigate to run Windows batch file:
+::Dir.chdir directory_etc
+
+# Windows Command Line Interpreter:
+com_spec = ::File.realpath ENV['ComSpec']
+
+# Command Line Interpreter options:
+#   /D     - Disable execution of AutoRun commands
+#   /E:off - Disable command extensions
+#   /Q     - Turns echo off
+#   /C     - Carries out the command specified by string and then terminates (must be last)
+options = %w[/D /E:off /Q /C]
+
+filename_mail = 'mail.bat'
+
+# Run Windows batch file:
+command_run [com_spec] + options + [filename_mail]

@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+=begin
+Set up, for Qplaylist Remember Songs Comments Process
+
+Author: Mark D. Blackwell (google me)
+mdb March 20, 2018 - created
+=end
+
+require_relative '../etc/methods'
+
+include ::Methods
+
+# Greet:
+greeting_at_opening
+
+# Navigate to run Bundler:
+::Dir.chdir project_root
+
+# Install necessary gems:
+command_run %w[bundle install --without development]
+
+::Kernel.exit child_status_integer unless command_ran_best
+
+# Run the setup program:
+command_run %w[bundle exec ruby] + [filename_program_set_up]
+
+::Kernel.exit child_status_integer unless command_ran_best

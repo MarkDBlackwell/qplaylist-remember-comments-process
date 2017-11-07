@@ -1,0 +1,1 @@
+mon 18 19 Juke juke@example.org

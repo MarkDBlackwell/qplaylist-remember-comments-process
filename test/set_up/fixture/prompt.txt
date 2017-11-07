@@ -1,0 +1,14 @@
+
+       Type Ctrl-C to cancel (at any time).
+       What is your FTP domain?
+       What is your FTP username?
+       What is your FTP password?
+       What is your email daemon's address?
+       What is your email daemon's password?
+       What is your schedule file (full path)?
+       Check these values:
+
+
+       Are all of these values correct?
+       Hit Enter to approve, or C to cancel.
+Success. Hit Enter to close.

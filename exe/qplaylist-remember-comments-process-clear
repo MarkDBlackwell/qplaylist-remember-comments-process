@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+=begin
+Delete comments, for Qplaylist Remember Songs Comments Process
+
+Author: Mark D. Blackwell (google me)
+mdb March 20, 2018 - created
+=end
+
+require_relative '../etc/methods'
+
+extend ::Methods
+
+# Greet:
+greeting_at_opening
+
+filename = filename_command_ftp 'delete'
+
+confirm_ftp_command_file_exists filename
+
+# Clear listener comments from the webserver computer:
+argument_ftp = "-s:#{filename}"
+command_run %w[ftp] + [argument_ftp]

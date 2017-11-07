@@ -1,0 +1,13 @@
+/.bundle/*
+/old/*
+/out/*
+/test/mail/appdata/*
+/test/mail/var/*
+/test/periods_check/appdata/*
+/test/periods_check/var/*
+/test/set_up/appdata/*
+/test/set_up/var/*
+
+/*.gem
+
+!.gitkeep
