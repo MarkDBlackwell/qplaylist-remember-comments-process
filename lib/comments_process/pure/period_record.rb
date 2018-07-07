@@ -22,9 +22,10 @@ module ::CommentsProcess
       def initialize(line)
         a = line.split ' '
         raise unless 5 == a.length
+        hours_day = MyTime.one_full_day_in_hours
         weekday, hour_start, hour_end, name_first_disk_jockey, @email_address_disk_jockey = a
-        @hour_end   = hour_end  .to_i % MyTime.one_full_day_in_hours
-        @hour_start = hour_start.to_i % MyTime.one_full_day_in_hours
+        @hour_end   = hour_end  .to_i % hours_day
+        @hour_start = hour_start.to_i % hours_day
         @name_first_disk_jockey = name_first_disk_jockey.capitalize
         @weekday = weekday.downcase
       end
