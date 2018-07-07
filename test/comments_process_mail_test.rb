@@ -66,7 +66,7 @@ Juke
 Tue 12 to 2 PM likes
 juke@example.org
 Dear Juke:
-Here are the songs users especially Liked! from your show, aired on 2018-06-05:
+Here are the songs users especially liked from your show, aired on 2018-06-05:
 
 6:48 PM Offa Rex (The Decembrists & Olivia Chaney): Bonny May
 Loved it! (2)

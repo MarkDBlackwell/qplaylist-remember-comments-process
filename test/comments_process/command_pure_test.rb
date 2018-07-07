@@ -34,7 +34,7 @@ class CommandPureTest < CommentsProcessTest
   def body
     <<HEREDOC
 Dear Bob:
-Here are the songs users especially Liked! from your show, aired on 2003-04-05:
+Here are the songs users especially liked from your show, aired on 2003-04-05:
 
 
 Sincerely,

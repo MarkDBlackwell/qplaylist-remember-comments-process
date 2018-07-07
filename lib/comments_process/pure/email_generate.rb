@@ -65,7 +65,7 @@ module ::CommentsProcess
         def email_body(date_air, name_first_disk_jockey, song_section)
 <<END
 Dear #{name_first_disk_jockey}:
-Here are the songs users especially Liked! from your show, aired on #{date_air}:
+Here are the songs users especially liked from your show, aired on #{date_air}:
 
 #{song_section}
 Sincerely,
