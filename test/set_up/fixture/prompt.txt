@@ -4,8 +4,8 @@
        What is your FTP username?
        What is your FTP password?
        What is your email daemon's address?
-       What is your email daemon's reply-to address?
        What is your email daemon's password?
+       What is your email daemon's reply-to address?
        What is your schedule file (full path)?
        Check these values:
 

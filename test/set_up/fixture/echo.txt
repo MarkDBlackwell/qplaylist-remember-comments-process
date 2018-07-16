@@ -6,9 +6,9 @@ some-FTP-password
 
 email-daemon@example.com
 
-email-reply-to-daemon@example.com
-
 email-daemon-password
+
+email-reply-to-daemon@example.com
 
 some-schedule-file-path
 
@@ -20,9 +20,9 @@ password_ftp:                    some-FTP-password
 
 email_address_daemon:            email-daemon@example.com
 
-email_address_reply_to_daemon:   email-reply-to-daemon@example.com
-
 email_password_daemon:           email-daemon-password
+
+email_address_reply_to_daemon:   email-reply-to-daemon@example.com
 
 schedule_source:                 some-schedule-file-path
 

@@ -41,8 +41,8 @@ module ::CommentsProcess
               username_ftp
               password_ftp
               email_address_daemon
-              email_address_reply_to_daemon
               email_password_daemon
+              email_address_reply_to_daemon
               schedule_source
               ]
           keys_prompt = [
@@ -50,8 +50,8 @@ module ::CommentsProcess
               'FTP username',
               'FTP password',
               'email daemon\'s address',
-              'email daemon\'s reply-to address',
               'email daemon\'s password',
+              'email daemon\'s reply-to address',
               'schedule file (full path)',
               ]
           result = ::Hash.new

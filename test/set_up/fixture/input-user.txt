@@ -2,8 +2,8 @@ some-domain
 some-FTP-username
 some-FTP-password
 email-daemon@example.com
-email-reply-to-daemon@example.com
 email-daemon-password
+email-reply-to-daemon@example.com
 some-schedule-file-path
 
 
