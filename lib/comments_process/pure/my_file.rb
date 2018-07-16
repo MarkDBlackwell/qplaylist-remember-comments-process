@@ -7,7 +7,7 @@ module ::CommentsProcess
 
         def file_lines(filename)
           ::File.open filename, 'r' do |f|
-            return f.readlines.map{|e| e.chomp}
+            return f.readlines.map(&:chomp)
           end
         end
 

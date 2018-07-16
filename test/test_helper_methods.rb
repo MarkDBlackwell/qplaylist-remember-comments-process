@@ -16,7 +16,7 @@ module ::QplaylistRememberCommentsProcessTest
       def assert_equal_file_content(expected_filename, actual_filename)
         ::   File.open expected_filename, 'r' do |f_exp|
           :: File.open   actual_filename, 'r'   do |f_act|
-            expected, actual = [f_exp, f_act].map{|f| f.readlines}
+            expected, actual = [f_exp, f_act].map(&:readlines)
             assert_equal expected, actual
           end
         end

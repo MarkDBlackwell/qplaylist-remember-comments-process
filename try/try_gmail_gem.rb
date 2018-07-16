@@ -18,7 +18,7 @@ module TryGmailGemModule
 
     def config_read
       ::File.open 'environment-file.txt', 'r' do |f|
-        list = f.readlines.map{|e| e.chomp}
+        list = f.readlines.map(&:chomp)
         separator = '='
         list.each do |line|
           a = line.split separator
@@ -34,7 +34,10 @@ module TryGmailGemModule
     include TryGmailGemMethods
 
     def run
-      config_names = %w[ qplaylist_remember_songs_mail_password  qplaylist_remember_songs_mail_username ].map{|e| e.upcase}
+      config_names = %w[
+          qplaylist_remember_songs_mail_password
+          qplaylist_remember_songs_mail_username
+          ].map(&:upcase)
       password_account_mail, username_account_mail = configuration_initialize config_names
       ::Gmail.connect!(username_account_mail, password_account_mail) do |gmail|
         email = gmail.compose do

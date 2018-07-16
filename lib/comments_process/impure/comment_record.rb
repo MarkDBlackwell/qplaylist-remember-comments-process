@@ -1,5 +1,7 @@
 # coding: utf-8
 
+require 'my_time'
+
 module ::CommentsProcess
   module Impure
     class CommentRecord
@@ -8,16 +10,12 @@ module ::CommentsProcess
 
 # Keep before attr_reader:
       def self.names_ordered
-        %i[
-            year
-            month
-            mday
-            hour
-            minute
+        additional = %w[
             internet_protocol_address
             user_identifier
             category
             ]
+        Pure::MyTime.ymdhm + additional
       end
 
       attr_reader(*names_ordered)
@@ -25,12 +23,12 @@ module ::CommentsProcess
       attr_accessor :seq
 
       def initialize(comment_record)
-        count_regular = self.class.names_ordered.length
+        count_ever_present = self.class.names_ordered.length
         all = comment_record.split ' '
-        raise unless all.length >= count_regular.succ
-        a = all.take count_regular
-        names_ordered.each_with_index{|e,i| instance_variable_set :"@#{e}", (a.at i)}
-        @rest = (all.drop count_regular).join ' '
+        raise unless all.length > count_ever_present
+        ever_present = all.take count_ever_present
+        names_ordered.zip(ever_present).each{|name,value| instance_variable_set :"@#{name}", value}
+        @rest = (all.drop count_ever_present).join ' '
       end
 
       def <=>(other)

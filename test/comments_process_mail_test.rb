@@ -12,15 +12,32 @@ module ::CommentsProcess
 
 # Keep before attr_reader:
         def self.names_ordered_test
-          %w[email address password].map{|e| :"#{e}_test"}
+          a = %w[
+              email
+              address
+              address_reply_to
+              password
+              ]
+          a.map{|e| :"#{e}_test"}
         end
 
         attr_reader(*names_ordered_test)
 
         def connect_and_send(*args)
-          %w[email address password].zip(args).each do |name,        arg|
-            instance_variable_set                  :"@#{name}_test", arg
+          a = my_self.names_ordered_test
+          a.zip(args).each do         |name,   arg|
+            instance_variable_set :"@#{name}", arg
           end
+        end
+
+        def my_self
+# Here, simply using 'self' doesn't work. (I don't know why.)
+# Clue: 'self' is 'CommentsProcess::Impure::EmailSend'.
+# Clue; 'CommentsProcess::Impure::EmailSend' is extended with
+#   '::CommentsProcess::Impure::EmailSend::ClassMethods',
+#   (rather than using 'include').
+
+         ::CommentsProcess::Impure::EmailSend::ClassMethods
         end
       end
     end

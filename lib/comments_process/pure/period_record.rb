@@ -39,12 +39,16 @@ module ::CommentsProcess
         "<#{s}>"
       end
 
+      def day_before(weekday)
+        week_length = 7
+        (weekday - 1) % week_length
+      end
+
       def matches(wday_end, hour)
         wday_start = if hour_start <= hour_end
           wday_end
         else
-          week_length = 7
-          (wday_end - 1) % week_length
+          day_before wday_end
         end
         weekday_good = weekday == (MyTime.weekday_s wday_start)
         hour_good    = hour_end == hour
@@ -52,7 +56,7 @@ module ::CommentsProcess
       end
 
       def to_s
-        '' # During test development, avoid puzzlement.
+        '' # During test development, avoid puzzlement by enforcing use of #airshow, instead.
       end
     end
   end

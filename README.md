@@ -108,6 +108,7 @@ $ qplaylist-remember-comments-process-set-up
 This will ask questions about:
 1. The credentials to access an FTP account on your web server;
 1. The credentials to access the "Remember Songs Daemon" email account;
+1. Your desired "Remember Songs Daemon" reply-to email address;
 1. Your desired filename
 (including network drive letter and path)
 for a special, air-show schedule file

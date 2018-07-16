@@ -25,15 +25,15 @@ module ::CommentsProcess
         private
 
         def comments_by_timestamp(comments)
-          grouped = comments.group_by do |e|
-            fields_time.map{|field| e.send field}.join ' '
+          grouped = comments.group_by do |comment|
+            MyTime.ymdhm.map{|field| comment.send field}.join ' '
           end
           grouped.sort.to_h
         end
 
         def comments_by_user(comments)
-          grouped = (comments_sorted comments).group_by do |e|
-            fields_group_by_user.map{|field| e.send field}.join ' '
+          grouped = (comments_sorted comments).group_by do |comment|
+            fields_group_by_user.map{|field| comment.send field}.join ' '
           end
           grouped.sort.to_h
         end
@@ -43,7 +43,7 @@ module ::CommentsProcess
           (comments_by_user comments_for_one_timestamp).each_pair do |key, unsorted|
             a = unsorted.sort{|x,y| x.seq <=> y.seq}
             hash[key] = a.first
-            hash[key].rest = a.map{|e| e.rest}.join '; '
+            hash[key].rest = a.map(&:rest).join '; '
           end
           hash.values
         end
@@ -74,11 +74,10 @@ END
         end
 
         def fields_group_by_user
-          %i[internet_protocol_address  user_identifier]
-        end
-
-        def fields_time
-          %i[year month mday hour minute]
+          %i[
+              internet_protocol_address
+              user_identifier
+              ]
         end
 
         def likes_coalesced(comments)
@@ -91,9 +90,13 @@ END
         end
 
         def names_method
-          names_partial = %w[song likes comments] # Keep order.
+          names_partial_ordered = %w[
+              song
+              likes
+              comments
+              ]
 ## Methods accessed: #comments_coalesced #likes_coalesced #song_coalesced
-          names_partial.map{|e| "#{e}_coalesced"}
+          names_partial_ordered.map{|e| "#{e}_coalesced"}
         end
 
         def period_string(period)
@@ -129,7 +132,7 @@ END
           ensure_at_least_one = ['']
           (comments_by_timestamp period_comments).each_pair do |key, array|
             combined = names.map{|e| send e, array}.reduce :+
-            hash[key] = combined.compact.map{|e| e.rest} + ensure_at_least_one
+            hash[key] = combined.compact.map(&:rest) + ensure_at_least_one
           end
           hash.values.flatten 1
         end

@@ -1,5 +1,6 @@
 # coding: utf-8
 
+require 'logger'
 require 'model'
 require 'my_file'
 
@@ -25,16 +26,17 @@ module ::CommentsProcess
           configuration_read
           model_keys = %i[
               email_address_daemon
+              email_address_reply_to_daemon
               email_password_daemon
               schedule_source
               ]
           configuration_names = model_keys.map{|e| "qplaylist_rcp_#{e}".upcase}
           configuration_values = configuration_names.map{|e| ::ENV[e]}.compact
-          values_all_have      = configuration_values.none?{|e| e.empty?}
+          values_all_have      = configuration_values.none?(&:empty?)
           length_good          = configuration_values.length == model_keys.length
           unless length_good && values_all_have
-            print "Missing (at least one of) environment variables #{configuration_names.join ', '}.\n"
-            raise
+            message = "In environment file, missing (at least one of) environment variables: #{configuration_names.join ', '}.\n"
+            Logger.crash message
           end
           (model_keys.zip configuration_values).each{|k,v| model[k] = v}
           nil
@@ -42,11 +44,15 @@ module ::CommentsProcess
 
         def configuration_read
           ::File.open Pure::MyFile.filename_environment_file, 'r' do |f|
-            list = f.readlines.map{|e| e.chomp}
+            list = f.readlines.map(&:chomp)
             list.each do |line|
               token_count_per_line_expected = 2
-              a = (line.split '=').map{|e| e.strip}
-              raise unless a.length == token_count_per_line_expected
+              a = (line.split '=').map(&:strip)
+              token_count = a.length
+              unless token_count == token_count_per_line_expected
+                message = "Bad environment file token count (#{token_count}) in line: \`#{line}'. There should be exactly #{token_count_per_line_expected} tokens.\n"
+                Logger.crash message
+              end
               name, value = a
               ::ENV[name] = value
             end

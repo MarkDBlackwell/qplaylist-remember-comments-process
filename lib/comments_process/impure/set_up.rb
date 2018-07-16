@@ -41,6 +41,7 @@ module ::CommentsProcess
               username_ftp
               password_ftp
               email_address_daemon
+              email_address_reply_to_daemon
               email_password_daemon
               schedule_source
               ]
@@ -49,11 +50,12 @@ module ::CommentsProcess
               'FTP username',
               'FTP password',
               'email daemon\'s address',
+              'email daemon\'s reply-to address',
               'email daemon\'s password',
               'schedule file (full path)',
               ]
           result = ::Hash.new
-          keys.zip(keys_prompt).each do |key,key_prompt|
+          keys.zip(keys_prompt).each do |key, key_prompt|
             Pure::MyFile.filehandle_prompt.print "#{prompt_prefix}What is your #{key_prompt}?\n"
             response = Pure::MyFile.filehandle_input_user.gets.chomp
             Pure::MyFile.filehandle_echo.print "#{response}\n\n"
@@ -64,7 +66,7 @@ module ::CommentsProcess
 
         def configuration_print(table)
           Pure::MyFile.filehandle_prompt.print "#{prompt_prefix}Check these values:\n\n"
-          key_length_max = table.keys.map{|e| e.to_s.length}.max
+          key_length_max = table.keys.map(&:to_s).map(&:length).max
           spaces_to_add_min = 3
           table.each_pair do |key, value|
             spaces_to_add = spaces_to_add_min + key_length_max - key.length
@@ -106,7 +108,10 @@ module ::CommentsProcess
         end
 
         def ftp_file_create(table)
-          %w[delete get].each do |action|
+          %w[
+              delete
+              get
+              ].each do |action|
             filename = ::File.join Pure::MyFile.folder_data_own, "comments-#{action}.ftp"
             ::File.open filename, 'w' do |f|
               f.print "open #{table[:domain_ftp  ]}\n"

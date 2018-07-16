@@ -3,6 +3,7 @@
 require 'command_pure'
 require 'comment_record'
 require 'email_send'
+require 'logger'
 require 'my_file'
 require 'period_record'
 
@@ -37,16 +38,19 @@ module ::CommentsProcess
         end
 
         def commands_pure
-          %i[do_email_generate  do_period_comments_generate  do_periods_process]
+          %i[
+              do_email_generate
+              do_period_comments_generate
+              do_periods_process
+              ]
         end
 
         def comments_sequentialize(comments)
 # Add a sequence field, because Ruby's Array#sort doesn't guarantee
 # that it preserves order. See:
 # https://stackoverflow.com/a/15442966/1136063
-          highest = comments.length - 1
-          highest_length = highest.to_s.length
-          (0..highest).each{|i| comments[i].seq = i.to_s.ljust highest_length, '0'}
+          seq = sequence_numbers comments
+          comments.zip(seq).each{|comment,sequence| comment.seq = sequence}
           nil
         end
 
@@ -66,34 +70,20 @@ module ::CommentsProcess
         def do_log_write
           message_raw, trace_write = @data
           message = whitespace_compress message_raw
-          time = log_write_time
-          line = "#{time} #{message}\n"
-          ::File.open Pure::MyFile.filename_log, 'a' do |f|
-            f.print line
-#print 'trace_write='; p trace_write
-            if trace_write
-              entries_omit_count = 3
-              execution_stack = ::Kernel.caller entries_omit_count
-              execution_stack.each{|e| f.print "#{time} #{e}\n"}
-            end
-          end
+          Logger.log_write message, trace_write
           nil
         end
 
         def do_periods_load_and_filter
           lines = Pure::MyFile.file_lines periods_file
 #print 'lines='; pp lines
+# TODO: Ignore blank lines and hash-mark comments.
           periods = lines.map{|e| Pure::PeriodRecord.new e}
           wday = Pure::MyTime.current_wday @model
           hour = Pure::MyTime.current_hour @model
           @model[:periods_current] = periods.select{|e| e.matches wday, hour}
 #print '@model[:periods_current]='; pp @model[:periods_current]
           nil
-        end
-
-        def log_write_time
-          format = '%Y-%m-%d %^a %H:%M:%S'
-          ::Time.now.strftime format
         end
 
         def periods_file
@@ -107,6 +97,12 @@ module ::CommentsProcess
             command_push [:do_log_write, data]
           end
           result
+        end
+
+        def sequence_numbers(a)
+          highest = a.length - 1
+          width = highest.to_s.length
+          (0..highest).map{|i| sprintf '%0*i', width, i}
         end
 
         def whitespace_compress(s)

@@ -6,19 +6,23 @@ some-FTP-password
 
 email-daemon@example.com
 
+email-reply-to-daemon@example.com
+
 email-daemon-password
 
 some-schedule-file-path
 
-domain_ftp:              some-domain
+domain_ftp:                      some-domain
 
-username_ftp:            some-FTP-username
+username_ftp:                    some-FTP-username
 
-password_ftp:            some-FTP-password
+password_ftp:                    some-FTP-password
 
-email_address_daemon:    email-daemon@example.com
+email_address_daemon:            email-daemon@example.com
 
-email_password_daemon:   email-daemon-password
+email_address_reply_to_daemon:   email-reply-to-daemon@example.com
 
-schedule_source:         some-schedule-file-path
+email_password_daemon:           email-daemon-password
+
+schedule_source:                 some-schedule-file-path
 

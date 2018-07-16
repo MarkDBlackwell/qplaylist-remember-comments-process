@@ -52,7 +52,19 @@ module ::CommentsProcess
         end
 
         def ymd
-          %w[year month mday]
+          %w[
+              year
+              month
+              mday
+              ]
+        end
+
+        def ymdhm
+          hm = %w[
+              hour
+              minute
+              ]
+          ymd + hm
         end
 
         private
@@ -62,7 +74,15 @@ module ::CommentsProcess
         end
 
         def weekdays
-          %w[sun mon tue wed thu fri sat]
+          %w[
+              sun
+              mon
+              tue
+              wed
+              thu
+              fri
+              sat
+              ]
         end
       end
 
