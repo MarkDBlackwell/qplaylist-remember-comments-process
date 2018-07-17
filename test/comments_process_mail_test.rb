@@ -85,15 +85,15 @@ juke@example.org
 Dear Juke:
 Here are the songs users especially liked from your show, aired on 2018-06-05:
 
-6:48 PM Offa Rex (The Decembrists & Olivia Chaney): Bonny May
+6:48 PM - "Song aOne" - Artist One
 Loved it! (2)
 gg; hh
 
-6:49 PM Offa Rex (The Decembrists & Olivia Chaney): Bonny Maya
-6:49 PM Offa Rex (The Decembrists & Olivia Chaney): Bonny Mayb
+6:49 PM - "Song bTwo" - Artist Two
+6:49 PM - "Song cThree" - Artist Three
 Loved it! (3)
 dd
-ee; ff; gg
+ee; ff; gg; zz; yy; xx; ww; vv
 hh; ii; jj
 
 Sincerely,
