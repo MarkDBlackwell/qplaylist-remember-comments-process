@@ -38,6 +38,7 @@ module ::CommentsProcess
         end
 
         def commands_pure
+# Keep alphabetical:
           %i[
               do_email_generate
               do_period_comments_generate
