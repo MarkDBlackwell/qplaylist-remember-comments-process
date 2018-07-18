@@ -14,10 +14,7 @@ module ::CommentsProcess
 #   test/mail/fixture/log.txt
 
         def generate(model, period, period_comments)
-          date_air = "#{MyTime.current_year( model).to_s.rjust 4, '0'
-                    }-#{MyTime.current_month(model).to_s.rjust 2, '0'
-                    }-#{MyTime.current_mday( model).to_s.rjust 2, '0'
-                    }"
+          date_air = model[:current_time].strftime '%Y-%m-%d'
           email_address_disk_jockey = period.email_address_disk_jockey
           name_first_disk_jockey = period.name_first_disk_jockey
           song_section = swathes_by_song(period_comments).join "\n"

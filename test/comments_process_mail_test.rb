@@ -58,6 +58,7 @@ module ::QplaylistRememberCommentsProcessTest
       stub_things do
 ##assert_raises SystemExit do
         file_clear filename_output_log
+print '::Dir.pwd='; p ::Dir.pwd
         load_and_run_the_code_to_be_tested
         assert_connect_and_send
         assert_equal_file_content expected_filename_output_log, filename_output_log
@@ -111,7 +112,7 @@ HEREDOC
       filename_fixture 'comments.txt'
     end
 
-    def filename_environment
+    def filename_environment_file
       filename_fixture 'environment-file.txt'
     end
 
@@ -125,12 +126,12 @@ HEREDOC
     end
 
     def stub_things
-      ::            CommentsProcess::Pure::MyFile.stub :filename_comments,         filename_comments   do
-        ::          CommentsProcess::Pure::MyFile.stub :filename_environment_file, filename_environment  do
-          ::        CommentsProcess::Pure::MyFile.stub :filename_log,              filename_output_log     do
-            ::      CommentsProcess::Pure::MyFile.stub :folder_data_applications,  folder_data_applications  do
-              ::    CommentsProcess::Pure::MyFile.stub :folder_data_own,           folder_data_own             do
-                ::  Time.stub                          :now,                       time_now                      do
+      ::            CommentsProcess::Pure::MyFile.stub :filename_comments,         filename_comments              do
+        ::          CommentsProcess::Pure::MyFile.stub :filename_environment_file, filename_environment_file      do
+          ::        CommentsProcess::Pure::MyFile.stub :filename_log,              filename_output_log            do
+            ::      CommentsProcess::Pure::MyFile.stub :folder_data_applications,  folder_data_applications       do
+              ::    CommentsProcess::Pure::MyFile.stub :folder_data_own,           folder_data_own                do
+                ::  Time.stub                          :now,                       time_now                       do
                   yield
                 end
               end

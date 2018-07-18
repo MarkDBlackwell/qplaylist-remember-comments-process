@@ -105,11 +105,11 @@ module ::QplaylistRememberCommentsProcessTest
     end
 
     def stub_things
-      ::          CommentsProcess::Pure::MyFile.stub :filehandle_input_user,    filehandle_input_user  do
-        ::        CommentsProcess::Pure::MyFile.stub :filehandle_echo,          filehandle_output_echo   do
-          ::      CommentsProcess::Pure::MyFile.stub :filehandle_prompt,        filehandle_output_prompt   do
-            ::    CommentsProcess::Pure::MyFile.stub :filename_log,             filename_output_log          do
-              ::  CommentsProcess::Pure::MyFile.stub :folder_data_applications, folder_data_applications       do
+      ::          CommentsProcess::Pure::MyFile.stub :filehandle_input_user,    filehandle_input_user         do
+        ::        CommentsProcess::Pure::MyFile.stub :filehandle_echo,          filehandle_output_echo        do
+          ::      CommentsProcess::Pure::MyFile.stub :filehandle_prompt,        filehandle_output_prompt      do
+            ::    CommentsProcess::Pure::MyFile.stub :filename_log,             filename_output_log           do
+              ::  CommentsProcess::Pure::MyFile.stub :folder_data_applications, folder_data_applications      do
                 yield
               end
             end

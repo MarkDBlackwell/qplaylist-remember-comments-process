@@ -9,24 +9,13 @@ module ::CommentsProcess
           current_time(model).hour
         end
 
-        def current_mday(model)
-          current_time(model).mday
-        end
-
-        def current_month(model)
-          current_time(model).month
-        end
-
         def current_wday(model)
           current_time(model).wday
         end
 
-        def current_year(model)
-          current_time(model).year
-        end
-
         def current_ymd(model)
-          ymd.map{|e| "current_#{e}".to_sym}.map{|e| send e, model}
+          time = current_time model
+          ymd.map(&:to_sym).map{|e| time.send e}
         end
 
         def few_minutes
@@ -39,7 +28,7 @@ module ::CommentsProcess
         end
 
         def one_full_day
-          one_full_day_in_hours * 60 * 60
+          one_full_day_in_hours * 60 * 60 # In seconds.
         end
 
         def one_full_day_in_hours
