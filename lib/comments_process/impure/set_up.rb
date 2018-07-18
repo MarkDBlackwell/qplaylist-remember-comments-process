@@ -36,7 +36,7 @@ module ::CommentsProcess
         end
 
         def configuration_get
-          keys = %i[
+          keys_ordered = %i[
               domain_ftp
               username_ftp
               password_ftp
@@ -45,7 +45,7 @@ module ::CommentsProcess
               email_address_reply_to_daemon
               schedule_source
               ]
-          keys_prompt = [
+          keys_ordered_prompt = [
               'FTP domain',
               'FTP username',
               'FTP password',
@@ -55,7 +55,7 @@ module ::CommentsProcess
               'schedule file (full path)',
               ]
           result = ::Hash.new
-          keys.zip(keys_prompt).each do |key, key_prompt|
+          keys_ordered.zip(keys_ordered_prompt).each do |key, key_prompt|
             Pure::MyFile.filehandle_prompt.print "#{prompt_prefix}What is your #{key_prompt}?\n"
             response = Pure::MyFile.filehandle_input_user.gets.chomp
             Pure::MyFile.filehandle_echo.print "#{response}\n\n"
@@ -83,7 +83,7 @@ module ::CommentsProcess
               password_ftp
               username_ftp
               ]
-            table.each_pair do |key, value|
+            table.sort.each do |key, value|
               unless blocked_keys.include? key
                 full = "qplaylist_rcp_#{key}".upcase
                 f.print "#{full}=#{value}\n"
@@ -117,7 +117,7 @@ module ::CommentsProcess
               f.print "open #{table[:domain_ftp  ]}\n"
               f.print "#{     table[:username_ftp]}\n"
               f.print "#{     table[:password_ftp]}\n"
-              (ftp_file_partial action).each{|e| f.print "#{e}\n"}
+              ftp_file_partial(action).each{|e| f.print "#{e}\n"}
             end
           end
           nil

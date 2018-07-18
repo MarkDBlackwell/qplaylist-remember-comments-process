@@ -23,7 +23,7 @@ module ::CommentsProcess
 #print 'command='; p command
           instruction, @data = command
           unless commands_pure.include? instruction
-            Command.send instruction
+            self.send instruction
           else
             @commands_to_add = Pure::CommandPure.send instruction, @model, @data
           end
@@ -38,7 +38,7 @@ module ::CommentsProcess
         end
 
         def commands_pure
-# Keep alphabetical:
+# Keep alphabetized:
           %i[
               do_email_generate
               do_period_comments_generate
@@ -76,28 +76,26 @@ module ::CommentsProcess
         end
 
         def do_periods_load_and_filter
-          lines = Pure::MyFile.file_lines periods_file
-#print 'lines='; pp lines
+          lines = periods_file_lines
 # TODO: Ignore blank lines and hash-mark comments.
           periods = lines.map{|e| Pure::PeriodRecord.new e}
           wday = Pure::MyTime.current_wday @model
           hour = Pure::MyTime.current_hour @model
           @model[:periods_current] = periods.select{|e| e.matches wday, hour}
-#print '@model[:periods_current]='; pp @model[:periods_current]
           nil
         end
 
-        def periods_file
-          result = @model[:schedule_source]
-#print 'result='; pp result
-          source_okay = (::File.file? result) && (::File.readable? result)
-#print 'source_okay='; pp source_okay
-          unless source_okay
+        def periods_file_lines
+          filename = @model[:schedule_source]
+          source_okay = (::File.file? filename) && (::File.readable? filename)
+          if source_okay
+            Pure::MyFile.file_lines filename
+          else
             trace_write = true
-            data = ["Schedule file: #{result} inaccessible", trace_write]
+            data = ["Schedule file: #{filename} inaccessible", trace_write]
             command_push [:do_log_write, data]
+            ::Array.new
           end
-          result
         end
 
         def sequence_numbers(a)

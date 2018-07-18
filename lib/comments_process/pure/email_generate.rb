@@ -8,14 +8,19 @@ module ::CommentsProcess
     module EmailGenerate
       module ClassMethods
 
+
+# TODO: Three Likes on Song cThree. They should be on Song bTwo, per:
+#   test/mail/fixture/comments.txt
+#   test/mail/fixture/log.txt
+
         def generate(model, period, period_comments)
-          date_air = "#{(MyTime.current_year  model).to_s.rjust 4, '0'
-                    }-#{(MyTime.current_month model).to_s.rjust 2, '0'
-                    }-#{(MyTime.current_mday  model).to_s.rjust 2, '0'
+          date_air = "#{MyTime.current_year( model).to_s.rjust 4, '0'
+                    }-#{MyTime.current_month(model).to_s.rjust 2, '0'
+                    }-#{MyTime.current_mday( model).to_s.rjust 2, '0'
                     }"
           email_address_disk_jockey = period.email_address_disk_jockey
           name_first_disk_jockey = period.name_first_disk_jockey
-          song_section = (swathes_by_song period_comments).join "\n"
+          song_section = swathes_by_song(period_comments).join "\n"
           subject = "#{period.weekday.capitalize} #{period_string period} likes"
 # Depends on above.
           body = email_body date_air, name_first_disk_jockey, song_section
@@ -32,7 +37,7 @@ module ::CommentsProcess
         end
 
         def comments_by_user(comments)
-          grouped = (comments_sorted comments).group_by do |comment|
+          grouped = comments_sorted(comments).group_by do |comment|
             fields_group_by_user.map{|field| comment.send field}.join ' '
           end
           grouped.sort.to_h
@@ -40,7 +45,7 @@ module ::CommentsProcess
 
         def comments_coalesced(comments_for_one_timestamp)
           hash = ::Hash.new
-          (comments_by_user comments_for_one_timestamp).each_pair do |key, unsorted|
+          comments_by_user(comments_for_one_timestamp).each_pair do |key, unsorted|
             a = unsorted.sort{|x,y| x.seq <=> y.seq}
             hash[key] = a.first
             hash[key].rest = a.map(&:rest).join '; '
@@ -54,7 +59,7 @@ module ::CommentsProcess
 
         def comments_sorted(comments)
           fields = fields_group_by_user + %i[seq]
-          (comments_selected comments).sort do |x,y|
+          comments_selected(comments).sort do |x,y|
             key_x, key_y = [x,y].map do |e|
               fields.map{|field| e.send field}.join ' '
             end
@@ -130,7 +135,7 @@ END
           hash = ::Hash.new
           names = names_method
           ensure_at_least_one = ['']
-          (comments_by_timestamp period_comments).each_pair do |key, array|
+          comments_by_timestamp(period_comments).each_pair do |key, array|
             combined = names.map{|e| send e, array}.reduce :+
             hash[key] = combined.compact.map(&:rest) + ensure_at_least_one
           end

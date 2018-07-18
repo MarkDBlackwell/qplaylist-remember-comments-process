@@ -50,6 +50,7 @@ module ::CommentsProcess
 
         def do_periods_process(model, _)
           model[:periods_current].map{|e| [:do_period_comments_generate, e]}
+# TODO: Handle empty array.
         end
 
         def window_start_end(model, period)

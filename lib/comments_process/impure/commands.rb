@@ -18,8 +18,10 @@ module ::CommentsProcess
 
         def process_single
           command = @commands.shift # FIFO stack.
-          @model, commands_to_add = Command.process @model, command
-          @commands.push(*commands_to_add)
+          unless command.empty?
+            @model, commands_to_add = Command.process @model, command
+            @commands.push(*commands_to_add)
+          end
           nil
         end
       end

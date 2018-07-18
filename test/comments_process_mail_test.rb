@@ -56,10 +56,12 @@ module ::QplaylistRememberCommentsProcessTest
 
     def test_all
       stub_things do
+##assert_raises SystemExit do
         file_clear filename_output_log
         load_and_run_the_code_to_be_tested
         assert_connect_and_send
         assert_equal_file_content expected_filename_output_log, filename_output_log
+##end
       end
       nil
     end

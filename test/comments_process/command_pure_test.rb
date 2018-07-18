@@ -1,8 +1,8 @@
 # coding: utf-8
 
 require_relative '../test_helper'
-require_relative 'test_fixture_model'
 require_relative 'test_fixture_data'
+require_relative 'test_fixture_model'
 require 'command_pure'
 require 'email_record'
 

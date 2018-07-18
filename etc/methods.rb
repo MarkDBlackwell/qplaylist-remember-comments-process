@@ -70,7 +70,7 @@ module ::Methods
     def greeting_at_opening
       author = 'Mark D. Blackwell'
       email = 'markdblackwell01@gmail.com'
-      program = (::File.split $PROGRAM_NAME).last
+      program = ::File.split($PROGRAM_NAME).last
       year = '2018'
       message = "#{program}  " \
           "Copyright (C) #{year}  #{author} <#{email}>, " \

@@ -1,4 +1,4 @@
 QPLAYLIST_RCP_EMAIL_ADDRESS_DAEMON=email-daemon@example.com
-QPLAYLIST_RCP_EMAIL_PASSWORD_DAEMON=email-daemon-password
 QPLAYLIST_RCP_EMAIL_ADDRESS_REPLY_TO_DAEMON=email-reply-to-daemon@example.com
+QPLAYLIST_RCP_EMAIL_PASSWORD_DAEMON=email-daemon-password
 QPLAYLIST_RCP_SCHEDULE_SOURCE=../fixture/RememberSongsSchedule.txt

@@ -28,7 +28,7 @@ module ::CommentsProcess
         raise unless all.length > count_ever_present
         ever_present = all.take count_ever_present
         names_ordered.zip(ever_present).each{|name,value| instance_variable_set :"@#{name}", value}
-        @rest = (all.drop count_ever_present).join ' '
+        @rest = all.drop(count_ever_present).join ' '
       end
 
       def <=>(other)

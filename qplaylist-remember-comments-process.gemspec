@@ -26,7 +26,7 @@ gem_name = 'qplaylist-remember-comments-process'
         which uses WideOrbit automation software.
         HERE
   s.email       = 'markdblackwell01@example.com'
-  s.executables = (::Dir.glob 'exe/**/*').map{|e| ::File.basename e}
+  s.executables = ::Dir.glob('exe/**/*').map{|e| ::File.basename e}
   s.files += ::Dir.glob '.[^.]*' # Root dotfiles.
   s.files += ::Dir.glob 'Gemfile*' # Include Gemfile.lock.
   s.files += ::Dir.glob 'LICENSE.txt'

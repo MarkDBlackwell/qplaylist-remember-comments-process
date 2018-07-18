@@ -23,7 +23,7 @@ module TryGmailGemModule
         list.each do |line|
           a = line.split separator
           name = a.first.strip
-          value = ((a.drop 1).join separator).strip
+          value = a.drop(1).join(separator).strip
           ::ENV[name] = value
         end
       end

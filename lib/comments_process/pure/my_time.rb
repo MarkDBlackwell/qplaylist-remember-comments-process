@@ -6,23 +6,23 @@ module ::CommentsProcess
       module ClassMethods
 
         def current_hour(model)
-          (current_time model).hour
+          current_time(model).hour
         end
 
         def current_mday(model)
-          (current_time model).mday
+          current_time(model).mday
         end
 
         def current_month(model)
-          (current_time model).month
+          current_time(model).month
         end
 
         def current_wday(model)
-          (current_time model).wday
+          current_time(model).wday
         end
 
         def current_year(model)
-          (current_time model).year
+          current_time(model).year
         end
 
         def current_ymd(model)
