@@ -41,9 +41,9 @@ module TryGmailGemModule
       password_account_mail, username_account_mail = configuration_initialize config_names
       ::Gmail.connect!(username_account_mail, password_account_mail) do |gmail|
         email = gmail.compose do
-          to "markdblackwell01@gmail.com"
-          subject "Having fun in Puerto Rico!"
-          body "Spent the following day on the road..."
+          to 'name@gmail.com'
+          subject 'Having fun in Puerto Rico!'
+          body 'Spent the following day on the road...'
         end
         email.deliver!
       end

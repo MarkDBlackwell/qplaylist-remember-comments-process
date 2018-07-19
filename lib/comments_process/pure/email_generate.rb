@@ -44,7 +44,7 @@ module ::CommentsProcess
         end
 
         def comments_selected(comments)
-          comments.select{|e| "c" == e.category}
+          comments.select{|e| 'c' == e.category}
         end
 
         def comments_sorted(comments)
@@ -86,7 +86,7 @@ END
         end
 
         def likes_coalesced(comments)
-          likes = comments.select{|e| "l" == e.category}
+          likes = comments.select{|e| 'l' == e.category}
           like = likes.first
           if likes.length > 1
             like.rest += " (#{likes.length})"
@@ -127,7 +127,7 @@ END
         end
 
         def song_coalesced(comments)
-          song = comments.select{|e| "s" == e.category}
+          song = comments.select{|e| 's' == e.category}
           song.uniq{|e| e.rest}.sort{|x,y| x.rest <=> y.rest}
         end
 
