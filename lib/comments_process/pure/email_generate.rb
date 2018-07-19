@@ -14,20 +14,19 @@ module ::CommentsProcess
 #   test/mail/fixture/log.txt
 
         def generate(model, period, period_comments)
-          date_air = model[:current_time].strftime '%Y-%m-%d'
-          email_address_disk_jockey = period.email_address_disk_jockey
-          name_first_disk_jockey = period.name_first_disk_jockey
-          song_section = swathes_by_song(period_comments).join "\n"
           subject = "#{period.weekday.capitalize} #{period_string period} likes"
+          song_section = swathes_by_song(period_comments).join "\n"
+          forename = period.name_first_disk_jockey
+          date_air = MyTime.current_time_ymd_dashes model
 # Depends on above.
-          body = email_body date_air, name_first_disk_jockey, song_section
-          EmailRecord.new email_address_disk_jockey, body, name_first_disk_jockey, subject
+          body = email_body date_air, forename, song_section
+          EmailRecord.new period.email_address_disk_jockey, body, forename, subject
         end
 
         private
 
-        def comments_by_timestamp(comments)
-          grouped = comments.group_by do |comment|
+        def comments_by_timestamp(period_comments)
+          grouped = period_comments.group_by do |comment|
             MyTime.ymdhm.map{|field| comment.send field}.join ' '
           end
           grouped.sort.to_h

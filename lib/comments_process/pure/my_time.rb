@@ -9,6 +9,11 @@ module ::CommentsProcess
           current_time(model).hour
         end
 
+        def current_time_ymd_dashes(model)
+          format = '%Y-%m-%d'
+          current_time(model).strftime format
+        end
+
         def current_wday(model)
           current_time(model).wday
         end
