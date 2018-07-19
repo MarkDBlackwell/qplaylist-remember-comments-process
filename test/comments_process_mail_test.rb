@@ -35,7 +35,7 @@ module ::CommentsProcess
 # Clue: 'self' is 'CommentsProcess::Impure::EmailSend'.
 # Clue; 'CommentsProcess::Impure::EmailSend' is extended with
 #   '::CommentsProcess::Impure::EmailSend::ClassMethods',
-#   (rather than using 'include').
+#   (rather than including it).
 
          ::CommentsProcess::Impure::EmailSend::ClassMethods
         end
