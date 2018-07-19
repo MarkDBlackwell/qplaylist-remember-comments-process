@@ -3,6 +3,7 @@
 require 'command_pure'
 require 'comment_record'
 require 'email_send'
+require 'helper'
 require 'logger'
 require 'my_file'
 require 'period_record'
@@ -11,6 +12,8 @@ module ::CommentsProcess
   module Impure
     module Command
       module ClassMethods
+
+        include Pure::Helper
 
         def process(model, command)
 ## The instructions (the opcodes for the commands) are symbols, beginning
@@ -96,12 +99,6 @@ module ::CommentsProcess
             command_push [:do_log_write, data]
             ::Array.new
           end
-        end
-
-        def sequence_numbers(a)
-          highest = a.length - 1
-          width = highest.to_s.length
-          (0..highest).map{|i| sprintf '%0*i', width, i}
         end
 
         def whitespace_compress(s)
