@@ -5,6 +5,7 @@ require 'my_time'
 module ::CommentsProcess
   module Impure
     class CommentRecord
+# TODO: From the pure part of this, create a parent class.
 
       include ::Comparable
 

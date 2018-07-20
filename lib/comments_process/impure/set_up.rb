@@ -8,11 +8,11 @@ module ::CommentsProcess
       module ClassMethods
 
         def run
-          table = interact
+          hash = interact
           if approval_obtained
             folders_create
-            environment_file_fill table
-            ftp_file_create table
+            environment_file_fill hash
+            ftp_file_create hash
             closing_message
           end
           nil
@@ -64,18 +64,18 @@ module ::CommentsProcess
           result
         end
 
-        def configuration_print(table)
+        def configuration_print(hash)
           Pure::MyFile.filehandle_prompt.print "#{prompt_prefix}Check these values:\n\n"
-          key_length_max = table.keys.map(&:to_s).map(&:length).max
+          key_length_max = hash.keys.map(&:to_s).map(&:length).max
           spaces_to_add_min = 3
-          table.each_pair do |key, value|
+          hash.each do |key, value|
             spaces_to_add = spaces_to_add_min + key_length_max - key.length
             Pure::MyFile.filehandle_echo.print "#{key}:#{' '*spaces_to_add}#{value}\n\n"
           end
           nil
         end
 
-        def environment_file_fill(table)
+        def environment_file_fill(hash)
           filename = ::File.join Pure::MyFile.folder_data_own, 'environment-file.txt'
           ::File.open filename, 'w' do |f|
           blocked_keys = %i[
@@ -83,7 +83,7 @@ module ::CommentsProcess
               password_ftp
               username_ftp
               ]
-            table.sort.each do |key, value|
+            hash.sort.each do |key, value|
               unless blocked_keys.include? key
                 full = "qplaylist_rcp_#{key}".upcase
                 f.print "#{full}=#{value}\n"
@@ -107,16 +107,16 @@ module ::CommentsProcess
           nil
         end
 
-        def ftp_file_create(table)
+        def ftp_file_create(hash)
           %w[
               delete
               get
               ].each do |action|
             filename = ::File.join Pure::MyFile.folder_data_own, "comments-#{action}.ftp"
             ::File.open filename, 'w' do |f|
-              f.print "open #{table[:domain_ftp  ]}\n"
-              f.print "#{     table[:username_ftp]}\n"
-              f.print "#{     table[:password_ftp]}\n"
+              f.print "open #{hash[:domain_ftp  ]}\n"
+              f.print "#{     hash[:username_ftp]}\n"
+              f.print "#{     hash[:password_ftp]}\n"
               ftp_file_partial(action).each{|e| f.print "#{e}\n"}
             end
           end

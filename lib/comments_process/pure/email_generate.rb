@@ -2,6 +2,7 @@
 
 require 'email_record'
 require 'my_time'
+require 'songs'
 
 module ::CommentsProcess
   module Pure
@@ -26,14 +27,30 @@ module ::CommentsProcess
         private
 
         def comments_by_song(period_comments)
-          comments_by_timestamp period_comments
-        end
+          result = ::Hash.new
+#         by_timestamp = comments_by_timestamp period_comments
+#         by_timestamp.each do |key, comment_lines|
 
-        def comments_by_timestamp(period_comments)
-          grouped = period_comments.group_by do |comment|
-            MyTime.ymdhm.map{|field| comment.send field}.join ' '
-          end
-          grouped.sort.to_h
+          comments_by_timestamp(period_comments).each do |key, comment_lines_unsorted|
+            comment_lines = comment_lines_unsorted.sort{|x,y| x.seq <=> y.seq}
+            timestamp_songs = ::Array
+
+            raise if result.empty? && comment_lines.first.category != 's'
+            comment_lines.each do |comment_line|
+              if 's' == comment_line.category
+                position = result.length
+                key_big = [key, position]
+                result[key_big] = [comment_line]
+              else
+                result[key_big].push comment_line
+              end
+
+?          song = comments.select{|e| 's' == e.category}
+?          song.uniq{|e| e.rest}.sort{|x,y| x.rest <=> y.rest}
+
+?         comments_by_song(period_comments).each do |key, array|
+?         ensure_at_least_one = ['']
+?           hash[key] = combined.compact.map(&:rest) + ensure_at_least_one
         end
 
         def comments_by_user(comments)
@@ -59,7 +76,7 @@ module ::CommentsProcess
 
         def comments_written_coalesced(comments_for_one_timestamp)
           hash = ::Hash.new
-          comments_by_user(comments_for_one_timestamp).each_pair do |key, unsorted|
+          comments_by_user(comments_for_one_timestamp).each do |key, unsorted|
             a = unsorted.sort{|x,y| x.seq <=> y.seq}
             hash[key] = a.first
             hash[key].rest = a.map(&:rest).join '; '
@@ -132,13 +149,17 @@ END
         end
 
         def swathes_by_song(period_comments)
+=begin
           hash = ::Hash.new
           ensure_at_least_one = ['']
-          comments_by_song(period_comments).each_pair do |key, array|
+          comments_by_song(period_comments).each do |key, array|
             combined = names_method.map{|e| send e, array}.reduce :+
             hash[key] = combined.compact.map(&:rest) + ensure_at_least_one
           end
           hash.values.flatten 1
+=end
+          songs = Songs.new period_comments
+
         end
       end
 
