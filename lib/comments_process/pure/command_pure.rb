@@ -11,8 +11,7 @@ module ::CommentsProcess
         private
 
         def comment_time(comment)
-          precise = MyTime.ymdhm.map(&:to_sym)
-          arguments = precise.map{|e| comment.send e}.map(&:to_i)
+          arguments = comment.timestamp.split(' ').map(&:to_i)
           ::Time.new(*arguments)
         end
 

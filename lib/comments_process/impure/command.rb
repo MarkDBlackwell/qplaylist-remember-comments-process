@@ -50,9 +50,11 @@ module ::CommentsProcess
         end
 
         def comments_sequentialize(comments)
-# Add a sequence field, because Ruby's Array#sort doesn't guarantee
-# that it preserves order. See:
-# https://stackoverflow.com/a/15442966/1136063
+## Add a sequence field, because Ruby's Array#sort doesn't guarantee
+## that it preserves order. See:
+## https://stackoverflow.com/a/15442966/1136063
+
+# TODO: For sequence numbers, replace strings with integers.
           seq = sequence_numbers comments
           comments.zip(seq).each{|comment,sequence| comment.seq = sequence}
           nil

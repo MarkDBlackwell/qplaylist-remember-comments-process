@@ -10,6 +10,12 @@ module ::CommentsProcess
         width = highest.to_s.length
         (0..highest).map{|i| sprintf '%0*i', width, i}
       end
+
+      def sort_by_sequence_array(comments_array)
+        result = comments_array.sort{|x,y| x.seq <=> y.seq}
+        raise unless 's' == result.first.category unless result.empty?
+        result
+      end
     end
   end
 end

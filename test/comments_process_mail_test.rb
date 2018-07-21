@@ -58,7 +58,7 @@ module ::QplaylistRememberCommentsProcessTest
       stub_things do
 ##assert_raises SystemExit do
         file_clear filename_output_log
-print '::Dir.pwd='; p ::Dir.pwd
+#print '::Dir.pwd='; p ::Dir.pwd
         load_and_run_the_code_to_be_tested
         assert_connect_and_send
         assert_equal_file_content expected_filename_output_log, filename_output_log
@@ -81,27 +81,10 @@ print '::Dir.pwd='; p ::Dir.pwd
     end
 
     def expected_email
-      <<HEREDOC
-Juke
-Tue 12 to 2 PM likes
-juke@example.org
-Dear Juke:
-Here are the songs users especially liked from your show, aired on 2018-06-05:
-
-6:48 PM - "Song aOne" - Artist One
-Loved it! (2)
-gg; hh
-
-6:49 PM - "Song bTwo" - Artist Two
-6:49 PM - "Song cThree" - Artist Three
-Loved it! (3)
-dd
-ee; ff; gg; zz; yy; xx; ww; vv
-hh; ii; jj
-
-Sincerely,
-The Remember Songs daemon
-HEREDOC
+      filename = filename_fixture 'email.txt'
+      ::File.open filename, 'r' do |f|
+        return f.read
+      end
     end
 
     def expected_filename_output_log

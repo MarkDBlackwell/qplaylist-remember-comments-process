@@ -1,5 +1,6 @@
 # coding: utf-8
 
+=begin
 require 'comment_record'
 
 module ::CommentsProcess
@@ -20,8 +21,8 @@ module ::CommentsProcess
       end
 
       def <=>(other)
-        
       end
     end
   end
 end
+=end

@@ -1,0 +1,11 @@
+Juke
+Tue 12 to 2 PM likes
+juke@example.org
+Dear Juke:
+Here are the songs users especially liked from your show, aired on 2018-06-05:
+
+6:48 PM - "Song aOne" - Artist One
+Loved it! (2)
+
+Sincerely,
+The Remember Songs daemon

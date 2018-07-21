@@ -9,5 +9,8 @@ class EmailGenerateTest < CommentsProcessTest
 #   flunk
   end
 
+  def test_email_generate
+  end
+
   private
 end
