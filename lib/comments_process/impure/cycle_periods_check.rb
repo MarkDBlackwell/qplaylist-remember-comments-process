@@ -30,6 +30,7 @@ module ::CommentsProcess
 
         def exit_error_possibly
 #print 'Commands.model[:periods_current]='; pp Commands.model[:periods_current]
+#-------------
           envelope_stop if Commands.model[:periods_current].empty?
           nil
         end

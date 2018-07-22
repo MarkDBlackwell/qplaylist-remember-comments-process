@@ -1,11 +1,12 @@
 # coding: utf-8
 
-require 'comments_by_timestamp'
+require 'comments_by_timestamp_hash'
 require 'helper'
 
 module ::CommentsProcess
   module Pure
 #   class SongsHash < ::Hash
+#-------------
     class SongsHash
 
       include ::Enumerable
@@ -26,9 +27,9 @@ module ::CommentsProcess
 #       sorted = sort_song_comments_by_sequence @songs
 #       @songs = sorted
 #print 'hash='; pp hash
-
+#-------------
         @songs = ::Hash.new
-        hash = CommentsByTimestamp.new period_comments
+        hash = CommentsByTimestampHash.new period_comments
 print 'hash.keys='; pp hash.keys
 print 'hash.values='; pp hash.values
         hash.map do |k, v|
@@ -38,9 +39,6 @@ print 'hash.values='; pp hash.values
       end
 
       def each
-#         @songs.each(&:yield).to_h
-#         @songs.each{|e| yield e}.to_h
-
         unless block_given?
           @songs.each
         else
@@ -51,10 +49,13 @@ print 'hash.values='; pp hash.values
 
       def inspect
         result = ::Array.new
+        result.push '{'
         @songs.each do |k, v|
-          result.push [k.inspect, v.inspect]
+          result.push *[ k.inspect,  "=>\n",  v.inspect,  ",\n" ]
         end
-        result
+        result.push '}'
+        result.push "\n"
+        result.join ''
       end
 
       def length
@@ -79,7 +80,7 @@ print 'hash.values='; pp hash.values
 #           next if songs.include? comment_line.rest
 #           songs.push comment_line.rest
 #           result.fetch(key_big).push comment_line
-
+#-------------
         by_sequence = sort_by_sequence_array comment_lines_unsorted
         result = ::Hash.new
         index, key_big, position = ::Array.new(3) # Predefine for block.
@@ -114,13 +115,13 @@ print 'hash.values='; pp hash.values
 #print 'values='; pp values
 #       sorted = ::Hash.new
 #       @songs.each do |key, song_comments|
-#         hash = CommentsByTimestamp.new song_comments
+#         hash = CommentsByTimestampHash.new song_comments
 #         values = hash.values.sort.flatten 1
 #         sorted.store key, (values.flatten 1)
 #         sorted.store key, values
 #       end
 #       @songs.replace sorted
-
+#-------------
         result = ::Hash.new
         song_comments_by_sequence.each do |key, comment_lines_unsorted|
             by_sequence = sort_by_sequence_array comment_lines_unsorted

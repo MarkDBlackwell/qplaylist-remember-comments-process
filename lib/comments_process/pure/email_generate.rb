@@ -18,11 +18,11 @@ module ::CommentsProcess
 
         def generate(model, period, period_comments_array)
 #print 'period_comments_array.first='; pp period_comments_array.first
-
-print 'period_comments_array='; pp period_comments_array
+#print 'period_comments_array='; pp period_comments_array
+#print 'song_section='; pp song_section
+#-------------
           subject = "#{period.weekday.capitalize} #{period_string period} likes"
           song_section = swathes_by_song_array(period_comments_array).join "\n"
-print 'song_section='; pp song_section
           forename = period.name_first_disk_jockey
           date_air = MyTime.current_time_ymd_dashes model
 # Depends on above.
@@ -51,8 +51,6 @@ END
         end
 
         def likes_coalesced_array(comments_array)
-#         likes_array = comments_array.select{|e| 'l' == e.category}
-
           likes_array = likes_selected_array comments_array
           return ::Array.new if likes_array.empty?
           like = likes_array.first
@@ -107,8 +105,6 @@ END
         end
 
         def remarks_coalesced_array(comments_for_one_song_array)
-#           a = comments_unsorted_array.sort{|x,y| x.seq <=> y.seq}
-
           hash = ::Hash.new
           remarks_by_user_hash(comments_for_one_song_array).each do |key, comments_unsorted_array|
             a = sort_by_sequence_array comments_unsorted_array
@@ -140,12 +136,12 @@ END
 #print 'e.rest='; pp e.rest
 #print 'selected_array='; pp selected_array
 #print 'result_array='; pp result_array
-
+#print 'songs_uniq='; pp songs_uniq
+#-------------
           selected_array = songs_selected_array comments_array
           songs_uniq = selected_array.uniq do |e|
             e.rest
           end
-print 'songs_uniq='; pp songs_uniq
           result_array = sort_by_rest_array songs_uniq
           result_array.each{|e| e.rest_improved = e.rest}
           result_array
@@ -176,11 +172,12 @@ print 'songs_uniq='; pp songs_uniq
 #           result_array.push reduced.map(&:rest_improved), reduced + ensure_at_least_one
 #print 'reduced='; pp reduced
 #print 'result_array='; pp result_array
-
+#-------------
           result_array = ::Array.new
           ensure_at_least_one = ['']
           songs_hash = SongsHash.new period_comments_array
-::File.open 'dump.txt', 'w' do |f|
+filename_dump = ::File.join __dir__, *['..']*3, 'test', 'shared', 'var', 'dump.txt'
+::File.open filename_dump, 'w' do |f|
   f.print 'songs_hash.inspect=', songs_hash.inspect, "\n"
 end
           songs_hash.each do |key, comments_array|

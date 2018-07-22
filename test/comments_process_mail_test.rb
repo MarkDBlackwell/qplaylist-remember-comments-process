@@ -10,7 +10,7 @@ module ::CommentsProcess
     module EmailSend
       module ClassMethods
 
-# Keep before attr_reader:
+## Keep before attr_reader:
         def self.names_ordered_test
           a = %w[
               email
@@ -31,11 +31,11 @@ module ::CommentsProcess
         end
 
         def my_self
-# Here, simply using 'self' doesn't work. (I don't know why.)
-# Clue: 'self' is 'CommentsProcess::Impure::EmailSend'.
-# Clue; 'CommentsProcess::Impure::EmailSend' is extended with
-#   '::CommentsProcess::Impure::EmailSend::ClassMethods',
-#   (rather than including it).
+## Here, simply using 'self' doesn't work. (I don't know why.)
+## Clue: 'self' is 'CommentsProcess::Impure::EmailSend'.
+## Clue; 'CommentsProcess::Impure::EmailSend' is extended with
+##   '::CommentsProcess::Impure::EmailSend::ClassMethods',
+##   (rather than including it).
 
          ::CommentsProcess::Impure::EmailSend::ClassMethods
         end
@@ -55,10 +55,11 @@ module ::QplaylistRememberCommentsProcessTest
     end
 
     def test_all
+#print '::Dir.pwd='; p ::Dir.pwd
+#-------------
       stub_things do
 ##assert_raises SystemExit do
         file_clear filename_output_log
-#print '::Dir.pwd='; p ::Dir.pwd
         load_and_run_the_code_to_be_tested
         assert_connect_and_send
         assert_equal_file_content expected_filename_output_log, filename_output_log
