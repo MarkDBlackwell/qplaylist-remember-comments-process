@@ -21,19 +21,20 @@ module ::CommentsProcess
 #print '@songs='; pp @songs
 #       @songs = ::Hash.new
 #       @songs.store :a, 1
-#       @array = hash.map{|k,v| segregate_by_song k, v}
-#         @songs.merge!(segregate_by_song k, v)
+#       @array = hash.map{|k,v| segregate_by_song_hash k, v}
+#         @songs.merge!(segregate_by_song_hash k, v)
 #       self
 #       sorted = sort_song_comments_by_sequence @songs
 #       @songs = sorted
 #print 'hash='; pp hash
+#print 'hash.keys='; pp hash.keys
+#print 'hash.values='; pp hash.values
+#print 'segregated.values='; pp segregated.values
 #-------------
         @songs = ::Hash.new
         hash = CommentsByTimestampHash.new period_comments
-print 'hash.keys='; pp hash.keys
-print 'hash.values='; pp hash.values
-        hash.map do |k, v|
-          segregated = segregate_by_song k, v
+        hash.map do |timestamp, comments_array|
+          segregated = segregate_by_song_hash timestamp, comments_array
           @songs.merge! segregated
         end
       end
@@ -51,10 +52,9 @@ print 'hash.values='; pp hash.values
         result = ::Array.new
         result.push '{'
         @songs.each do |k, v|
-          result.push *[ k.inspect,  "=>\n",  v.inspect,  ",\n" ]
+          result.push(*[ k.inspect,  "=>\n",  v.inspect,  ",\n" ])
         end
-        result.push '}'
-        result.push "\n"
+        result.push "}\n"
         result.join ''
       end
 
@@ -72,7 +72,7 @@ print 'hash.values='; pp hash.values
 
       private
 
-      def segregate_by_song(key, comment_lines_unsorted)
+      def segregate_by_song_hash(key, comment_lines_timestamp_unsorted)
 #print 'result='; pp result
 #print 'result='; pp result
 #print 'result='; pp result
@@ -80,13 +80,15 @@ print 'hash.values='; pp hash.values
 #           next if songs.include? comment_line.rest
 #           songs.push comment_line.rest
 #           result.fetch(key_big).push comment_line
+#           index = result.keys.find_index{|item| comment_line.rest == item}
 #-------------
-        by_sequence = sort_by_sequence_array comment_lines_unsorted
+        by_sequence = sort_by_sequence_array comment_lines_timestamp_unsorted
         result = ::Hash.new
         index, key_big, position = ::Array.new(3) # Predefine for block.
+        song_info = ::Array.new
         by_sequence.each do |comment_line|
           if 's' == comment_line.category
-            index = result.keys.find_index{|k| comment_line.rest == k}
+            index = song_info.find_index{|item| comment_line.rest == item}
             position = if index
               index
             else
@@ -94,6 +96,7 @@ print 'hash.values='; pp hash.values
             end
             key_big = [key, position]
             next if index
+            song_info.push comment_line.rest
             result.store key_big, [comment_line]
           else
             a = result.fetch key_big

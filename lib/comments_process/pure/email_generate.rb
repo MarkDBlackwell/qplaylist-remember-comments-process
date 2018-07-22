@@ -178,7 +178,7 @@ END
           songs_hash = SongsHash.new period_comments_array
 filename_dump = ::File.join __dir__, *['..']*3, 'test', 'shared', 'var', 'dump.txt'
 ::File.open filename_dump, 'w' do |f|
-  f.print 'songs_hash.inspect=', songs_hash.inspect, "\n"
+  f.print "songs_hash.inspect=\n", songs_hash.inspect, "\n"
 end
           songs_hash.each do |key, comments_array|
 ## Methods accessed: #likes_coalesced_array #remarks_coalesced_array #_array:
