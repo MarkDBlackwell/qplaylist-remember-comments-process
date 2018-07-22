@@ -21,8 +21,6 @@ module ::CommentsProcess
 ##   1. In this module; or
 ##   2. In module CommandPure.
 
-#print 'command='; p command
-#-------------
           @model = model.dup # See Model#initialize_copy.
           @commands_to_add = ::Array.new
           instruction, @data = command

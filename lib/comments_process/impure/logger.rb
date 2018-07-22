@@ -16,8 +16,6 @@ module ::CommentsProcess
         end
 
         def log_write(message, trace_write=false)
-#print 'trace_write='; p trace_write
-#-------------
           time = log_write_time
           line = "#{time} #{message}\n"
           ::File.open Pure::MyFile.filename_log, 'a' do |f|

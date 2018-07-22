@@ -145,7 +145,7 @@ module ::Methods
     end
 
     def log_write_time
-# '^a' means upper-case weekday name:
+## '^a' means upper-case weekday name:
       format = '%Y-%m-%d %^a %H:%M:%S'
       ::Time.now.strftime format
     end

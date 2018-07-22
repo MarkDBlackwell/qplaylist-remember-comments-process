@@ -17,10 +17,6 @@ module ::CommentsProcess
 #   test/mail/fixture/log.txt
 
         def generate(model, period, period_comments_array)
-#print 'period_comments_array.first='; pp period_comments_array.first
-#print 'period_comments_array='; pp period_comments_array
-#print 'song_section='; pp song_section
-#-------------
           subject = "#{period.weekday.capitalize} #{period_string period} likes"
           song_section = swathes_by_song_array(period_comments_array).join "\n"
           forename = period.name_first_disk_jockey
@@ -130,14 +126,6 @@ END
         end
 
         def songs_coalesced_array(comments_array)
-#         selected_array = comments_array.select{|e| 's' == e.category}.map{|e| e.seq = nil}
-#         songs_uniq = selected_array.uniq(&:rest)
-#         selected_array = comments_array.select{|e| 's' == e.category}
-#print 'e.rest='; pp e.rest
-#print 'selected_array='; pp selected_array
-#print 'result_array='; pp result_array
-#print 'songs_uniq='; pp songs_uniq
-#-------------
           selected_array = songs_selected_array comments_array
           songs_uniq = selected_array.uniq do |e|
             e.rest
@@ -156,23 +144,6 @@ END
         end
 
         def swathes_by_song_array(period_comments_array)
-#print 'period_comments_array.first='; pp period_comments_array.first
-#print 'songs.length='; pp songs.length
-#print 'songs.inspect='; pp songs.inspect
-#print 'songs='; pp songs
-#print 'songs.first='; pp songs.first
-#print 'songs.values.first.slice(0..10)='; pp songs.values.first.slice(0..10)
-#print 'array.slice(0..1)='; pp array.slice(0..1)
-#         result_hash.values.flatten 1
-# f.print 'songs_hash=', songs_hash, "\n"
-#           combined = names_method.map{|e| send e, array}.reduce :+
-#           result_hash[key] = combined.compact.map(&:rest_improved) + ensure_at_least_one
-#           reduced_safe = reduced.reject(&:empty?)
-#print 'combined='; pp combined
-#           result_array.push reduced.map(&:rest_improved), reduced + ensure_at_least_one
-#print 'reduced='; pp reduced
-#print 'result_array='; pp result_array
-#-------------
           result_array = ::Array.new
           ensure_at_least_one = ['']
           songs_hash = SongsHash.new period_comments_array

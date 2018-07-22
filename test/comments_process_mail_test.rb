@@ -55,8 +55,6 @@ module ::QplaylistRememberCommentsProcessTest
     end
 
     def test_all
-#print '::Dir.pwd='; p ::Dir.pwd
-#-------------
       stub_things do
 ##assert_raises SystemExit do
         file_clear filename_output_log

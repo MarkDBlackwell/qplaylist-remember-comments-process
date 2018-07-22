@@ -13,7 +13,6 @@ module ::CommentsProcess
 
       def sort_by_sequence_array(comments_array)
         result = comments_array.sort{|x,y| x.seq <=> y.seq}
-print 'result.first='; pp result.first
         raise unless 's' == result.first.category unless result.empty?
         result
       end
