@@ -48,7 +48,7 @@ namespace :test do
 
   desc 'Clean up test artifacts under various var directories'
   task :clean_var do
-    programs = %w[ mail  periods_check  set_up ]
+    programs = %w[ mail  periods_check  set_up shared ]
     programs.each do |program|
       glob_var = "test/#{program}/var/**"
       FileList.new(glob_var).each{|e| ::File.delete e unless ::File.directory? e}
