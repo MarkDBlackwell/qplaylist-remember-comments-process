@@ -53,7 +53,7 @@ gem_name = 'qplaylist-remember-comments-process'
   s.specification_version         = 1
   s.summary    = 'Process captured song comments'
   s.test_files = ::Dir.glob '{test,tests}/**/*'
-  s.version    = ::CommentsProcess::VERSION
+  s.version    = ::CommentsProcess::Pure::VERSION
 
 ## Base-level dependencies:
 ##     bundler
