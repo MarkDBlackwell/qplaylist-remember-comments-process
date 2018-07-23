@@ -2,7 +2,6 @@
 
 module ::CommentsProcess
   module Pure
-#   class CommentsByTimestampHash < ::Hash
     class CommentsByTimestampHash
 
       include ::Enumerable
@@ -18,22 +17,6 @@ module ::CommentsProcess
 ## 'each(&:yield)' doesn't work, here.
           @comments_by_timestamp_hash.each{|e| yield e}
         end
-      end
-
-      def inspect
-        @comments_by_timestamp_hash.inspect
-      end
-
-      def keys
-        @comments_by_timestamp_hash.keys
-      end
-
-      def to_a
-        @comments_by_timestamp_hash.to_a
-      end
-
-      def values
-        @comments_by_timestamp_hash.values
       end
 
       private

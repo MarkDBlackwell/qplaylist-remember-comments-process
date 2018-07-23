@@ -5,16 +5,14 @@ require 'helper'
 
 module ::CommentsProcess
   module Pure
-#   class SongsHash < ::Hash
-#-------------
     class SongsHash
 
-      include ::Enumerable
       include Helper
 
       def initialize(period_comments)
         @songs = ::Hash.new
         hash = CommentsByTimestampHash.new period_comments
+##comments_hash_dump hash, 'hash'
         hash.map do |timestamp, comments_array|
           segregated = segregate_by_song_hash timestamp, comments_array
           @songs.merge! segregated
@@ -40,18 +38,6 @@ module ::CommentsProcess
         end
         result.push "}\n"
         result.join ''
-      end
-
-      def length
-        @songs.length
-      end
-
-      def to_a
-        @songs.to_a
-      end
-
-      def values
-        @songs.values
       end
 
       private

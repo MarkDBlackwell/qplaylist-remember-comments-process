@@ -20,6 +20,6 @@ end
 module ::CommentsProcess
 end
 
-class CommentsProcessTest < Minitest::Test
+class CommentsProcessTest < ::Minitest::Test
   include ::CommentsProcess
 end

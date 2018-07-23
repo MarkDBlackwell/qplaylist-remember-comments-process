@@ -6,8 +6,6 @@ module ::CommentsProcess
   module Pure
     class CommentRecordPure
 
-      include ::Comparable
-
 # Keep before attr_reader:
       def self.names_ordered
         %w[

@@ -2,7 +2,7 @@
 
 module ::CommentsProcess
   module Impure
-    class Model < Hash
+    class Model < ::Hash
 
       def initialize_copy(previous)
         super

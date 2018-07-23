@@ -90,7 +90,7 @@ END
         end
 
         def remarks_by_user_hash(comments_array)
-          grouped_hash = remarks_sorted(comments_array).group_by do |comment|
+          grouped_hash = remarks_sorted_array(comments_array).group_by do |comment|
             fields_group_by_user.map{|field| comment.send field}.join ' '
           end
           grouped_hash.sort.to_h
@@ -111,7 +111,7 @@ END
           comments_array.select{|e| 'c' == e.category}
         end
 
-        def remarks_sorted(comments_array)
+        def remarks_sorted_array(comments_array)
           fields = fields_group_by_user + %i[seq]
           remarks_selected_array(comments_array).sort do |x,y|
             key_x, key_y = [x,y].map do |e|
@@ -146,7 +146,7 @@ END
 ##comments_hash_dump songs_hash, 'songs_hash'
           songs_hash.each do |key, comments_array|
 ##comments_array_dump comments_array, 'comments_array'
-## Methods accessed: #likes_coalesced_array #remarks_coalesced_array #_array:
+## Methods accessed:  #likes_coalesced_array  #remarks_coalesced_array  #songs_coalesced_array:
             combined = names_partial_ordered.map{|e| send "#{e}_coalesced_array", comments_array}
             reduced = combined.reduce :+
             result_array.push reduced.map(&:rest_improved) + ensure_at_least_one

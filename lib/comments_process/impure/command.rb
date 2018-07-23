@@ -49,7 +49,8 @@ module ::CommentsProcess
         end
 
         def comment_regexp
-          @comment_regexp_value ||= ::Regexp.new /#.*+$/
+# Keep ')' here:
+          @comment_regexp_value ||= ::Regexp.new(/#.*+$/)
         end
 
         def comments_sequentialize(comments)
