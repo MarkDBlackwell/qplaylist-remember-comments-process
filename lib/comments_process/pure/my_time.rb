@@ -27,6 +27,7 @@ module ::CommentsProcess
 #  Risks:
 # 1. The show could start a few minutes early; and
 # 2. The previous show's last song could be included.
+#-------------
           minutes_before_balanced = 4
           one_minute = 60
           one_minute * minutes_before_balanced # In seconds.

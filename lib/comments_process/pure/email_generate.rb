@@ -12,10 +12,6 @@ module ::CommentsProcess
 
         include Helper
 
-# TODO: Three Likes on Song cThree. They should be on Song bTwo, per:
-#   test/mail/fixture/comments.txt
-#   test/mail/fixture/log.txt
-
         def generate(model, period, period_comments_array)
           subject = "#{period.weekday.capitalize} #{period_string period} likes"
           song_section = swathes_by_song_array(period_comments_array).join "\n"
@@ -153,7 +149,6 @@ END
 ## Methods accessed: #likes_coalesced_array #remarks_coalesced_array #_array:
             combined = names_partial_ordered.map{|e| send "#{e}_coalesced_array", comments_array}
             reduced = combined.reduce :+
-## TODO: Flatten?
             result_array.push reduced.map(&:rest_improved) + ensure_at_least_one
           end
           result_array

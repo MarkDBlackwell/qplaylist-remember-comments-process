@@ -85,11 +85,11 @@ module ::Methods
        @project_root_value ||= ::File.realpath '..', dirname_script_this
     end
 
+    def scope
 # Confine local variables to a small scope
 # See:
 #   http://stackoverflow.com/a/27469713/1136063
-#
-    def scope
+#-------------
       yield
     end
 

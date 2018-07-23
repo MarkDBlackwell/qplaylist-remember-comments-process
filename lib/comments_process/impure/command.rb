@@ -20,7 +20,7 @@ module ::CommentsProcess
 ## with 'do_', and are defined as private methods, either:
 ##   1. In this module; or
 ##   2. In module CommandPure.
-
+#-------------
           @model = model.dup # See Model#initialize_copy.
           @commands_to_add = ::Array.new
           instruction, @data = command
@@ -48,12 +48,15 @@ module ::CommentsProcess
               ]
         end
 
+        def comment_regexp
+          @comment_regexp_value ||= ::Regexp.new /#.*+$/
+        end
+
         def comments_sequentialize(comments)
 ## Add a sequence field, because Ruby's Array#sort doesn't guarantee
 ## that it preserves order. See:
 ## https://stackoverflow.com/a/15442966/1136063
-
-# TODO: For sequence numbers, replace strings with integers.
+#-------------
           seq = sequence_numbers comments
           comments.zip(seq).each{|comment,sequence| comment.seq = sequence}
           nil
@@ -80,8 +83,9 @@ module ::CommentsProcess
         end
 
         def do_periods_load_and_filter
-          lines = periods_file_lines
-# TODO: Ignore blank lines and hash-mark comments.
+          lines_raw = periods_file_lines
+# Ignore blank lines and hash-mark comments:
+          lines = lines_raw.map{|e| e.sub comment_regexp, ''}.reject(&:empty?)
           periods = lines.map{|e| Pure::PeriodRecord.new e}
           wday = Pure::MyTime.current_wday @model
           hour = Pure::MyTime.current_hour @model

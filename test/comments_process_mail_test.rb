@@ -36,7 +36,7 @@ module ::CommentsProcess
 ## Clue; 'CommentsProcess::Impure::EmailSend' is extended with
 ##   '::CommentsProcess::Impure::EmailSend::ClassMethods',
 ##   (rather than including it).
-
+#-------------
          ::CommentsProcess::Impure::EmailSend::ClassMethods
         end
       end
