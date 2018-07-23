@@ -81,15 +81,6 @@ module ::CommentsProcess
         end
         result
       end
-
-#     def sort_song_comments_by_sequence(song_comments_by_sequence)
-#       result = ::Hash.new
-#       song_comments_by_sequence.each do |key, comment_lines_unsorted|
-#           by_sequence = sort_by_sequence_array comment_lines_unsorted
-#         result.store key, by_sequence
-#       end
-#       result
-#     end
     end
   end
 end

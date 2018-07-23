@@ -28,13 +28,6 @@ module ::CommentsProcess
         @rest = all.drop(ever_present_count).join ' '
       end
 
-#     def <=>(other)
-#       raise
-#       check_other = ([other.timestamp] + names_ordered.map{|e| other.send e}).join ' '
-#       check_this  = ([     @timestamp] + names_ordered.map{|e|       send e}).join ' '
-#       check_this <=> check_other
-#     end
-
       private
 
       def ever_present_count
@@ -66,8 +59,3 @@ module ::CommentsProcess
     end
   end
 end
-
-
-
-
-
