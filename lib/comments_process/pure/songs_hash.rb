@@ -34,7 +34,9 @@ module ::CommentsProcess
         result = ::Array.new
         result.push '{'
         @songs.each do |k, v|
-          result.push(*[ k.inspect,  "=>\n",  v.inspect,  ",\n" ])
+          result.push(*[ "\n",  k.inspect,  "=>\n[" ])
+          result.push v.map{|e| e.inspect}.join ",\n"
+          result.push "]"
         end
         result.push "}\n"
         result.join ''
@@ -80,14 +82,14 @@ module ::CommentsProcess
         result
       end
 
-      def sort_song_comments_by_sequence(song_comments_by_sequence)
-        result = ::Hash.new
-        song_comments_by_sequence.each do |key, comment_lines_unsorted|
-            by_sequence = sort_by_sequence_array comment_lines_unsorted
-          result.store key, by_sequence
-        end
-        result
-      end
+#     def sort_song_comments_by_sequence(song_comments_by_sequence)
+#       result = ::Hash.new
+#       song_comments_by_sequence.each do |key, comment_lines_unsorted|
+#           by_sequence = sort_by_sequence_array comment_lines_unsorted
+#         result.store key, by_sequence
+#       end
+#       result
+#     end
     end
   end
 end

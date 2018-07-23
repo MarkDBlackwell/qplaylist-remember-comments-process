@@ -27,6 +27,10 @@ module ::CommentsProcess
           ::File.join folder_volatiles, 'comments.txt'
         end
 
+        def filename_dump
+          ::File.join folder_dump, 'dump.txt'
+        end
+
         def filename_environment_file
           ::File.join folder_data_own, 'environment-file.txt'
         end
@@ -61,9 +65,13 @@ module ::CommentsProcess
           ::File.realpath ::ENV['APPDATA']
         end
 
+        def folder_dump
+          ::File.join project_root, *%w[test shared var]
+        end
+
         def project_root
           pure = dirname_script_this
-          target = ::File.join pure, '..', '..', '..'
+          target = ::File.join pure, *['..']*3
           ::File.realpath target
         end
       end

@@ -8,12 +8,10 @@
 2018 6 5 12 48 69.251.96.8 ITV c hh
 2018 6 5 12 49 69.251.96.8 ITV s 6:49 PM - "Song bTwo" - Artist Two
 2018 6 5 12 49 69.251.96.8 ITV l Loved it!
-2018 6 5 12 49 69.251.96.8 aJK s 6:49 PM - "Song bTwo" - Artist Two
-2018 6 5 12 49 69.251.96.8 aJK l Loved it!
-2018 6 5 12 49 69.251.96.8 iTV s 6:49 PM - "Song bTwo" - Artist Two
-2018 6 5 12 49 69.251.96.8 iTV l Loved it!
 2018 6 5 12 49 69.251.96.8 iTV s 6:49 PM - "Song cThree" - Artist Three
 2018 6 5 12 49 69.251.96.8 iTV c hh
+2018 6 5 12 49 69.251.96.8 iTV s 6:49 PM - "Song bTwo" - Artist Two
+2018 6 5 12 49 69.251.96.8 iTV l Loved it!
 2018 6 5 12 49 69.251.96.8 iTV s 6:49 PM - "Song cThree" - Artist Three
 2018 6 5 12 49 69.251.96.8 iTV c ii
 2018 6 5 12 49 69.251.96.8 iTV s 6:49 PM - "Song cThree" - Artist Three
@@ -34,5 +32,7 @@
 2018 6 5 12 49 69.251.96.8 aJK c xx
 2018 6 5 12 49 69.251.96.8 aJK s 6:49 PM - "Song cThree" - Artist Three
 2018 6 5 12 49 69.251.96.8 aJK c ww
+2018 6 5 12 49 69.251.96.8 aJK s 6:49 PM - "Song bTwo" - Artist Two
+2018 6 5 12 49 69.251.96.8 aJK l Loved it!
 2018 6 5 12 49 69.251.96.8 aJK s 6:49 PM - "Song cThree" - Artist Three
 2018 6 5 12 49 69.251.96.8 aJK c vv

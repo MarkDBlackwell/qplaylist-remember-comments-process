@@ -103,7 +103,7 @@ END
         def remarks_coalesced_array(comments_for_one_song_array)
           hash = ::Hash.new
           remarks_by_user_hash(comments_for_one_song_array).each do |key, comments_unsorted_array|
-            a = sort_by_sequence_array comments_unsorted_array
+            a = sort_by_sequence_array comments_unsorted_array, false
             hash.store key, a.first
             hash.fetch(key).rest_improved = a.map(&:rest).join '; '
           end
@@ -147,11 +147,9 @@ END
           result_array = ::Array.new
           ensure_at_least_one = ['']
           songs_hash = SongsHash.new period_comments_array
-filename_dump = ::File.join __dir__, *['..']*3, 'test', 'shared', 'var', 'dump.txt'
-::File.open filename_dump, 'w' do |f|
-  f.print "songs_hash.inspect=\n", songs_hash.inspect, "\n"
-end
+##comments_hash_dump songs_hash, 'songs_hash'
           songs_hash.each do |key, comments_array|
+##comments_array_dump comments_array, 'comments_array'
 ## Methods accessed: #likes_coalesced_array #remarks_coalesced_array #_array:
             combined = names_partial_ordered.map{|e| send "#{e}_coalesced_array", comments_array}
             reduced = combined.reduce :+
