@@ -2,7 +2,6 @@
 
 require 'minitest/autorun'
 require 'minitest/pride'
-require 'pp'
 
 =begin
 For command-line flags, see:

@@ -1,11 +1,6 @@
 # coding: utf-8
 
-module ::CommentsProcess
-  module Impure
-    module Init
-    end
-  end
-end
+require_relative 'test_helper'
 
 module ::QplaylistRememberCommentsProcessTest
   module TestHelperMethods
@@ -87,7 +82,17 @@ module ::QplaylistRememberCommentsProcessTest
         ::File.join dirname_script_this, program_prefix
       end
 
+      def impure_init_define
+        unless ::CommentsProcess         .const_defined? :Impure, false
+               ::CommentsProcess         .const_set      :Impure, Module.new
+        end
+        unless ::CommentsProcess::Impure .const_defined? :Init,   false
+               ::CommentsProcess::Impure .const_set      :Init,   Module.new
+        end
+      end
+
       def model_clear
+        impure_init_define
         ::CommentsProcess::Impure::Init.instance_variable_set :@model_value, nil
       end
 

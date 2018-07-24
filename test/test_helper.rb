@@ -1,6 +1,7 @@
 # coding: utf-8
 
 require_relative 'test_helper_minitest'
+require 'pp'
 
 dirname_file_current = ::Kernel.__dir__
 test = ::File.join dirname_file_current, '.'
