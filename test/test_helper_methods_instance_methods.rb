@@ -35,6 +35,10 @@ module ::QplaylistRememberCommentsProcessTest
         ::Kernel.__dir__
       end
 
+      def expected_filename_output_log
+        filename_fixture_shared 'log.txt'
+      end
+
       def file_clear(filename)
         ::File.open(filename, 'w'){}
         nil

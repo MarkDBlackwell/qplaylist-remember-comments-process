@@ -58,10 +58,6 @@ module ::QplaylistRememberCommentsProcessTest
       filename_fixture 'echo.txt'
     end
 
-    def expected_filename_output_log
-      filename_fixture 'log.txt'
-    end
-
     def expected_filename_prompt
       filename_fixture 'prompt.txt'
     end

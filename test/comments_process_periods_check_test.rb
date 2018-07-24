@@ -49,10 +49,6 @@ module ::QplaylistRememberCommentsProcessTest
       nil
     end
 
-    def expected_filename_output_log
-      filename_fixture 'log.txt'
-    end
-
     def filename_schedule_source_no_match
       filename_fixture 'RememberSongsScheduleNoMatch.txt'
     end
