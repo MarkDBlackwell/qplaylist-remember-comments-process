@@ -54,12 +54,24 @@ module ::QplaylistRememberCommentsProcessTest
         ::File.join folder_data_applications, basename_own, 'environment-file.txt'
       end
 
+      def filename_environment_file_fixture
+        filename_fixture_shared 'environment-file.txt'
+      end
+
       def filename_fixture(basename)
         ::File.join folder_testbed, 'fixture', basename
       end
 
+      def filename_fixture_shared(basename)
+        ::File.join folder_shared, 'fixture', basename
+      end
+
       def filename_output_log
         filename_volatile 'log.txt'
+      end
+
+      def filename_schedule_source
+        filename_fixture_shared 'RememberSongsSchedule.txt'
       end
 
       def filename_volatile(basename)
@@ -78,6 +90,10 @@ module ::QplaylistRememberCommentsProcessTest
         ::File.join folder_data_applications, basename_own
       end
 
+      def folder_shared
+        ::File.join dirname_script_this, 'shared'
+      end
+
       def folder_testbed
         ::File.join dirname_script_this, program_prefix
       end
@@ -89,6 +105,10 @@ module ::QplaylistRememberCommentsProcessTest
         unless ::CommentsProcess::Impure .const_defined? :Init,   false
                ::CommentsProcess::Impure .const_set      :Init,   Module.new
         end
+      end
+
+      def model
+        ::CommentsProcess::Impure::Init.instance_variable_get :@model_value
       end
 
       def model_clear

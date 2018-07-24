@@ -21,7 +21,9 @@ module ::QplaylistRememberCommentsProcessTest
       stub_things do
 ##assert_raises SystemExit do
         file_clear filename_output_log
-        run_the_code_to_be_tested
+        code_to_be_tested do
+          model[:schedule_source] = filename_schedule_source
+        end
         assert_connect_and_send
         assert_equal_file_content expected_filename_output_log, filename_output_log
 ##end
@@ -42,6 +44,13 @@ module ::QplaylistRememberCommentsProcessTest
       ::CommentsProcess::Impure::EmailSend.email_test.inspect
     end
 
+    def code_to_be_tested
+      ::CommentsProcess::Impure::CycleMail.init
+      yield if block_given?
+      ::CommentsProcess::Impure::CycleMail.run
+      nil
+    end
+
     def expected_email
       filename = filename_fixture 'email.txt'
       ::File.open filename, 'r' do |f|
@@ -57,27 +66,17 @@ module ::QplaylistRememberCommentsProcessTest
       filename_fixture 'comments.txt'
     end
 
-    def filename_environment_file
-      filename_fixture 'environment-file.txt'
-    end
-
     def program_prefix
       'mail'
     end
 
-    def run_the_code_to_be_tested
-      ::CommentsProcess::Impure::CycleMail.init
-      ::CommentsProcess::Impure::CycleMail.run
-      nil
-    end
-
     def stub_things
-      ::            CommentsProcess::Pure::MyFile.stub :filename_comments,         filename_comments              do
-        ::          CommentsProcess::Pure::MyFile.stub :filename_environment_file, filename_environment_file      do
-          ::        CommentsProcess::Pure::MyFile.stub :filename_log,              filename_output_log            do
-            ::      CommentsProcess::Pure::MyFile.stub :folder_data_applications,  folder_data_applications       do
-              ::    CommentsProcess::Pure::MyFile.stub :folder_data_own,           folder_data_own                do
-                ::  Time.stub                          :now,                       time_now                       do
+      ::            CommentsProcess::Pure::MyFile.stub :filename_comments,         filename_comments                      do
+        ::          CommentsProcess::Pure::MyFile.stub :filename_environment_file, filename_environment_file_fixture      do
+          ::        CommentsProcess::Pure::MyFile.stub :filename_log,              filename_output_log                    do
+            ::      CommentsProcess::Pure::MyFile.stub :folder_data_applications,  folder_data_applications               do
+              ::    CommentsProcess::Pure::MyFile.stub :folder_data_own,           folder_data_own                        do
+                ::  Time.stub                          :now,                       time_now                               do
                   yield
                 end
               end

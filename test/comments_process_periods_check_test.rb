@@ -16,60 +16,59 @@ module ::QplaylistRememberCommentsProcessTest
     end
 
     def test_no_periods_match
-      ::CommentsProcess::Pure::MyFile.stub :filename_environment_file, filename_environment_no_match do
-        stub_things do
-          file_touch filename_output_log
-          exception = assert_raises SystemExit do
-            run_the_code_to_be_tested
+      stub_things do
+        file_touch filename_output_log
+        exception = assert_raises SystemExit do
+          code_to_be_tested do
+            model[:schedule_source] = filename_schedule_source_no_match
           end
-          no_periods_match = 3
-          assert_equal no_periods_match, exception.status
         end
+        no_periods_match = 3
+        assert_equal no_periods_match, exception.status
       end
       nil
     end
 
     def test_rest
-      ::CommentsProcess::Pure::MyFile.stub :filename_environment_file, filename_environment_file do
-        stub_things do
-          file_touch filename_output_log # The code under test doesn't necessarily create the log file.
-          run_the_code_to_be_tested
-          assert_equal_file_content expected_filename_output_log, filename_output_log
+      stub_things do
+        file_touch filename_output_log # The code under test doesn't necessarily create the log file.
+        code_to_be_tested do
+          model[:schedule_source] = filename_schedule_source
         end
+        assert_equal_file_content expected_filename_output_log, filename_output_log
       end
       nil
     end
 
     private
 
+    def code_to_be_tested
+      ::CommentsProcess::Impure::CyclePeriodsCheck.init
+      yield if block_given?
+      ::CommentsProcess::Impure::CyclePeriodsCheck.run
+      nil
+    end
+
     def expected_filename_output_log
       filename_fixture 'log.txt'
     end
 
-    def filename_environment_file
-      filename_fixture 'environment-file.txt'
-    end
-
-    def filename_environment_no_match
-      filename_fixture 'environment-file-no-periods-match.txt'
+    def filename_schedule_source_no_match
+      filename_fixture 'RememberSongsScheduleNoMatch.txt'
     end
 
     def program_prefix
       'periods_check'
     end
 
-    def run_the_code_to_be_tested
-      ::CommentsProcess::Impure::CyclePeriodsCheck.init
-      ::CommentsProcess::Impure::CyclePeriodsCheck.run
-      nil
-    end
-
     def stub_things
-      ::        CommentsProcess::Pure::MyFile.stub :filename_log,             filename_output_log           do
-        ::      CommentsProcess::Pure::MyFile.stub :folder_data_applications, folder_data_applications      do
-          ::    CommentsProcess::Pure::MyFile.stub :folder_data_own,          folder_data_own               do
-            ::  Time.stub                          :now,                      time_now                      do
-              yield
+      ::          CommentsProcess::Pure::MyFile.stub :filename_environment_file, filename_environment_file_fixture     do
+        ::        CommentsProcess::Pure::MyFile.stub :filename_log,              filename_output_log                   do
+          ::      CommentsProcess::Pure::MyFile.stub :folder_data_applications,  folder_data_applications              do
+            ::    CommentsProcess::Pure::MyFile.stub :folder_data_own,           folder_data_own                       do
+              ::  Time.stub                          :now,                       time_now                              do
+                yield
+              end
             end
           end
         end

@@ -18,11 +18,11 @@ module ::QplaylistRememberCommentsProcessTest
     def test_all
       stub_things do
         file_touch filename_output_log # The code under test doesn't necessarily create the log file.
-        run_the_code_to_be_tested
+        code_to_be_tested
 
         assert_equal_file_content expected_filename_comments_delete,  filename_comments_delete
         assert_equal_file_content expected_filename_comments_get,     filename_comments_get
-        assert_equal_file_content expected_filename_environment_file, filename_environment_file
+        assert_equal_file_content filename_environment_file_fixture,  filename_environment_file
         assert_equal_file_content expected_filename_output_log,       filename_output_log
 
         assert_equal_filename_filehandle_content expected_filename_echo,   filehandle_output_echo
@@ -40,6 +40,12 @@ module ::QplaylistRememberCommentsProcessTest
 
     private
 
+    def code_to_be_tested
+      ::CommentsProcess::Impure::SetUp.init
+      ::CommentsProcess::Impure::SetUp.run
+      nil
+    end
+
     def expected_filename_comments_delete
       filename_fixture 'comments-delete.ftp'
     end
@@ -50,10 +56,6 @@ module ::QplaylistRememberCommentsProcessTest
 
     def expected_filename_echo
       filename_fixture 'echo.txt'
-    end
-
-    def expected_filename_environment_file
-      filename_fixture 'environment-file.txt'
     end
 
     def expected_filename_output_log
@@ -98,12 +100,6 @@ module ::QplaylistRememberCommentsProcessTest
 
     def program_prefix
       'set_up'
-    end
-
-    def run_the_code_to_be_tested
-      ::CommentsProcess::Impure::SetUp.init
-      ::CommentsProcess::Impure::SetUp.run
-      nil
     end
 
     def stub_things
