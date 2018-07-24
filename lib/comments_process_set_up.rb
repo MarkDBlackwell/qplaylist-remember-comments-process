@@ -10,6 +10,7 @@ require 'set_up'
 
 module ::CommentsProcess
   module Impure
+    SetUp.init
     SetUp.run
     nil
   end

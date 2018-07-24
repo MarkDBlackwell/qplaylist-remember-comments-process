@@ -3,6 +3,7 @@
 require_relative 'test_helper'
 require_relative 'test_helper_methods'
 require 'my_file'
+require 'set_up'
 
 module ::QplaylistRememberCommentsProcessTest
   class CommentsProcessSetUpTest < CommentsProcessTest
@@ -17,7 +18,7 @@ module ::QplaylistRememberCommentsProcessTest
     def test_all
       stub_things do
         file_touch filename_output_log # The code under test doesn't necessarily create the log file.
-        load_and_run_the_code_to_be_tested
+        run_the_code_to_be_tested
 
         assert_equal_file_content expected_filename_comments_delete,  filename_comments_delete
         assert_equal_file_content expected_filename_comments_get,     filename_comments_get
@@ -95,13 +96,14 @@ module ::QplaylistRememberCommentsProcessTest
       filename_volatile 'prompt.txt'
     end
 
-    def load_and_run_the_code_to_be_tested
-      ::Kernel.load "#{__dir__}/../lib/comments_process_set_up.rb"
-      nil
-    end
-
     def program_prefix
       'set_up'
+    end
+
+    def run_the_code_to_be_tested
+      ::CommentsProcess::Impure::SetUp.init
+      ::CommentsProcess::Impure::SetUp.run
+      nil
     end
 
     def stub_things

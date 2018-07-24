@@ -8,8 +8,12 @@ module ::CommentsProcess
     module CyclePeriodsCheck
       module ClassMethods
 
-        def run
+        def init
           Commands.model = Init.run
+          nil
+        end
+
+        def run
           Commands.process commands_initial
           exit_error_possibly
           nil

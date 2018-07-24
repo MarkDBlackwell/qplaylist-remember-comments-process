@@ -2,6 +2,7 @@
 
 require_relative 'test_helper'
 require_relative 'test_helper_methods'
+require 'cycle_periods_check'
 require 'my_file'
 
 module ::QplaylistRememberCommentsProcessTest
@@ -19,7 +20,7 @@ module ::QplaylistRememberCommentsProcessTest
         stub_things do
           file_touch filename_output_log
           exception = assert_raises SystemExit do
-            load_and_run_the_code_to_be_tested
+            run_the_code_to_be_tested
           end
           no_periods_match = 3
           assert_equal no_periods_match, exception.status
@@ -32,7 +33,7 @@ module ::QplaylistRememberCommentsProcessTest
       ::CommentsProcess::Pure::MyFile.stub :filename_environment_file, filename_environment_file do
         stub_things do
           file_touch filename_output_log # The code under test doesn't necessarily create the log file.
-          load_and_run_the_code_to_be_tested
+          run_the_code_to_be_tested
           assert_equal_file_content expected_filename_output_log, filename_output_log
         end
       end
@@ -53,13 +54,14 @@ module ::QplaylistRememberCommentsProcessTest
       filename_fixture 'environment-file-no-periods-match.txt'
     end
 
-    def load_and_run_the_code_to_be_tested
-      ::Kernel.load "#{__dir__}/../lib/comments_process_periods_check.rb"
-      nil
-    end
-
     def program_prefix
       'periods_check'
+    end
+
+    def run_the_code_to_be_tested
+      ::CommentsProcess::Impure::CyclePeriodsCheck.init
+      ::CommentsProcess::Impure::CyclePeriodsCheck.run
+      nil
     end
 
     def stub_things

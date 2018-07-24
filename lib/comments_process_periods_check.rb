@@ -10,6 +10,7 @@ require 'cycle_periods_check'
 
 module ::CommentsProcess
   module Impure
+    CyclePeriodsCheck.init
     CyclePeriodsCheck.run
     nil
   end

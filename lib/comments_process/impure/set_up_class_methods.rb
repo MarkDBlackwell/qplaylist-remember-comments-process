@@ -7,27 +7,23 @@ module ::CommentsProcess
     module SetUp
       module ClassMethods
 
+        def init
+          @configuration_hash = interact
+          @approval_obtained = verification_ask_for
+          nil
+        end
+
         def run
-          hash = interact
-          if approval_obtained
+          if @approval_obtained
             folders_create
-            environment_file_fill hash
-            ftp_file_create hash
+            environment_file_fill @configuration_hash
+            ftp_file_create @configuration_hash
             closing_message
           end
           nil
         end
 
         private
-
-        def approval_obtained
-          Pure::MyFile.filehandle_prompt.print "\n#{prompt_prefix}Are all of these values correct?\n"
-          Pure::MyFile.filehandle_prompt.print   "#{prompt_prefix}Hit Enter to approve, or C to cancel.\n"
-          line = Pure::MyFile.filehandle_input_user.gets
-          first_character = line.strip.downcase.slice 0..0
-          exit_desired = 'c' == first_character
-          !exit_desired
-        end
 
         def closing_message
           Pure::MyFile.filehandle_prompt.print "Success. Hit Enter to close.\n"
@@ -138,6 +134,15 @@ module ::CommentsProcess
 
         def prompt_prefix()
           ' '*7
+        end
+
+        def verification_ask_for
+          Pure::MyFile.filehandle_prompt.print "\n#{prompt_prefix}Are all of these values correct?\n"
+          Pure::MyFile.filehandle_prompt.print   "#{prompt_prefix}Hit Enter to approve, or C to cancel.\n"
+          line = Pure::MyFile.filehandle_input_user.gets
+          first_character = line.strip.downcase.slice 0..0
+          exit_desired = 'c' == first_character
+          !exit_desired
         end
       end
     end

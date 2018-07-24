@@ -10,6 +10,7 @@ require 'cycle_mail'
 
 module ::CommentsProcess
   module Impure
+    CycleMail.init
     CycleMail.run
     nil
   end

@@ -3,6 +3,7 @@
 require_relative 'test_helper'
 require_relative 'test_helper_methods'
 require_relative 'comments_process_impure_email_send_class_methods'
+require 'cycle_mail'
 require 'email_send'
 require 'my_file'
 
@@ -20,7 +21,7 @@ module ::QplaylistRememberCommentsProcessTest
       stub_things do
 ##assert_raises SystemExit do
         file_clear filename_output_log
-        load_and_run_the_code_to_be_tested
+        run_the_code_to_be_tested
         assert_connect_and_send
         assert_equal_file_content expected_filename_output_log, filename_output_log
 ##end
@@ -60,13 +61,14 @@ module ::QplaylistRememberCommentsProcessTest
       filename_fixture 'environment-file.txt'
     end
 
-    def load_and_run_the_code_to_be_tested
-      ::Kernel.load "#{__dir__}/../lib/comments_process_mail.rb"
-      nil
-    end
-
     def program_prefix
       'mail'
+    end
+
+    def run_the_code_to_be_tested
+      ::CommentsProcess::Impure::CycleMail.init
+      ::CommentsProcess::Impure::CycleMail.run
+      nil
     end
 
     def stub_things
