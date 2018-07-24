@@ -2,8 +2,8 @@
 
 require_relative 'test_helper'
 require_relative 'test_helper_methods'
-require_relative '../lib/comments_process/impure/email_send'
-require_relative '../lib/comments_process/pure/my_file'
+require 'email_send'
+require 'my_file'
 
 module ::CommentsProcess
   module Impure

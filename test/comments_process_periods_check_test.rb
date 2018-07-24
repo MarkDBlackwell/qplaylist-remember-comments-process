@@ -2,7 +2,7 @@
 
 require_relative 'test_helper'
 require_relative 'test_helper_methods'
-require_relative '../lib/comments_process/pure/my_file'
+require 'my_file'
 
 module ::QplaylistRememberCommentsProcessTest
   class CommentsProcessPeriodsCheckTest < ::Minitest::Test
