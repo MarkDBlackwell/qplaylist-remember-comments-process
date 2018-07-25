@@ -1,16 +1,12 @@
 # coding: utf-8
 
 require_relative '../test_helper'
-require 'email_generate'
+require_relative 'email_generate_test_instance_methods'
 
-class EmailGenerateTest < CommentsProcessTest
-
-  def test_email_generate
-#   flunk
+module ::QplaylistRememberCommentsProcessTest
+  module CommentsProcess
+    class EmailGenerateTest < CommentsProcessTest
+      include ::QplaylistRememberCommentsProcessTest::CommentsProcess::EmailGenerateTest::InstanceMethods
+    end
   end
-
-  def test_email_generate2
-  end
-
-  private
 end

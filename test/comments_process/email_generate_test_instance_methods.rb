@@ -1,0 +1,21 @@
+# coding: utf-8
+
+require 'email_generate'
+
+module ::QplaylistRememberCommentsProcessTest
+  module CommentsProcess
+    class EmailGenerateTest < CommentsProcessTest
+      module InstanceMethods
+
+        def test_email_generate
+#         flunk
+        end
+
+        def test_email_generate2
+        end
+
+        private
+      end
+    end
+  end
+end

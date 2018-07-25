@@ -1,16 +1,12 @@
 # coding: utf-8
 
 require_relative '../test_helper'
-require 'command'
+require_relative 'command_test_instance_methods'
 
-class CommandTest < CommentsProcessTest
-
-  def test_comments_sequence_numbers
-    count = 11
-    a = %w[a]*count
-    actual = Impure::Command.send :sequence_numbers, a
-    expected = count.times.to_a
-    assert_equal expected, actual
+module ::QplaylistRememberCommentsProcessTest
+  module CommentsProcess
+    class CommandTest < CommentsProcessTest
+      include ::QplaylistRememberCommentsProcessTest::CommentsProcess::CommandTest::InstanceMethods
+    end
   end
 end
-
