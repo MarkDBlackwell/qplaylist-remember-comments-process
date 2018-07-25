@@ -1,9 +1,7 @@
 # coding: utf-8
 
-dirname_file_current = ::Kernel.__dir__
-lib = ::File.realpath 'lib', dirname_file_current
-$LOAD_PATH.unshift lib unless $LOAD_PATH.include? lib
-require 'comments_process/pure/version'
+version = ::File.join(*%w[ lib  comments_process  pure  version])
+require_relative version
 
 # See: http://yehudakatz.com/2010/04/02/using-gemspecs-as-intended/
 
@@ -53,7 +51,7 @@ gem_name = 'qplaylist-remember-comments-process'
   s.specification_version         = 1
   s.summary    = 'Process captured song comments'
   s.test_files = ::Dir.glob '{test,tests}/**/*'
-  s.version    = ::CommentsProcess::Pure::VERSION
+  s.version    = ::QplaylistRememberCommentsProcess::CommentsProcess::Pure::VERSION
 
 ## Base-level dependencies:
 ##     bundler
