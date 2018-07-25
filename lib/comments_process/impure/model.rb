@@ -1,14 +1,11 @@
 # coding: utf-8
 
+require 'model_instance_methods'
+
 module ::CommentsProcess
   module Impure
     class Model < ::Hash
-
-      def initialize_copy(previous)
-        super
-        dumped = ::Marshal.dump previous
-        ::Marshal.load dumped
-      end
+      include ::CommentsProcess::Impure::Model::InstanceMethods
     end
   end
 end
