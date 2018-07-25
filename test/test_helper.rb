@@ -4,8 +4,7 @@ require_relative 'test_helper_minitest'
 require 'pp'
 
 dirname_file_current = ::Kernel.__dir__
-test = ::File.join dirname_file_current, '.'
-lib  = ::File.join test, '..', 'lib'
+lib  = ::File.join dirname_file_current, '..', 'lib'
 package = 'comments_process'
 legs_ordered = %w[
     pure
