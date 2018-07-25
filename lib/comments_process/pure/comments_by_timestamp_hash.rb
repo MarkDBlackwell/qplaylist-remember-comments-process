@@ -5,7 +5,7 @@ require 'comments_by_timestamp_hash_instance_methods'
 module ::CommentsProcess
   module Pure
     class CommentsByTimestampHash
-      include ::CommentsProcess::Pure::CommentsByTimestampHash::InstanceMethods
+      include InstanceMethods
     end
   end
 end

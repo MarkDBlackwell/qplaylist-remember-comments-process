@@ -18,7 +18,7 @@ module ::CommentsProcess
 
       attr_reader(*names)
 
-      include ::CommentsProcess::Pure::EmailRecord::InstanceMethods
+      include InstanceMethods
     end
   end
 end

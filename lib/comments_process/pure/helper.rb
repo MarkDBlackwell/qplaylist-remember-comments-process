@@ -5,7 +5,7 @@ require 'helper_instance_methods'
 module ::CommentsProcess
   module Pure
     module Helper
-      include ::CommentsProcess::Pure::Helper::InstanceMethods
+      include InstanceMethods
     end
   end
 end

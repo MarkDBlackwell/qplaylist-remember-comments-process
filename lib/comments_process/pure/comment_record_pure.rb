@@ -17,7 +17,7 @@ module ::CommentsProcess
 
       attr_reader(*names_ordered)
 
-      include ::CommentsProcess::Pure::CommentRecordPure::InstanceMethods
+      include InstanceMethods
     end
   end
 end

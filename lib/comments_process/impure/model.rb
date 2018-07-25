@@ -5,7 +5,7 @@ require 'model_instance_methods'
 module ::CommentsProcess
   module Impure
     class Model < ::Hash
-      include ::CommentsProcess::Impure::Model::InstanceMethods
+      include InstanceMethods
     end
   end
 end

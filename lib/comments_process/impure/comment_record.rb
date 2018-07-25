@@ -5,7 +5,7 @@ require 'comment_record_instance_methods'
 module ::CommentsProcess
   module Impure
     class CommentRecord < Pure::CommentRecordPure
-      include ::CommentsProcess::Impure::CommentRecord::InstanceMethods
+      include InstanceMethods
     end
   end
 end

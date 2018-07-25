@@ -19,7 +19,7 @@ module ::CommentsProcess
 
       attr_reader(*names)
 
-      include ::CommentsProcess::Pure::PeriodRecord::InstanceMethods
+      include InstanceMethods
     end
   end
 end
