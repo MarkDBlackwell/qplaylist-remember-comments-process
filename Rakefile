@@ -10,7 +10,7 @@ task default: :test
 # end
 
 desc 'Run all tests'
-# To pass options to Minitest:
+# To pass options to Minitest, do, for example:
 #   ruby -vw test/comments_process_periods_check_test.rb --seed 62879
 #
 task test: :'test:clean' do
