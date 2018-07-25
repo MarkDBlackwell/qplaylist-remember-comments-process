@@ -4,7 +4,7 @@ require_relative 'test_helper_methods'
 require 'cycle_periods_check'
 require 'my_file'
 
-module ::QplaylistRememberCommentsProcessTest
+module ::QplaylistRememberCommentsProcess
   class CommentsProcessPeriodsCheckTest < ::Minitest::Test
     module InstanceMethods
 

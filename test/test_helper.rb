@@ -17,7 +17,7 @@ branches.each do        |branch|
   $LOAD_PATH.unshift real unless $LOAD_PATH.include? real
 end
 
-module ::QplaylistRememberCommentsProcessTest
+module ::QplaylistRememberCommentsProcess
   class CommentsProcessTest < ::Minitest::Test
   end
 end

@@ -6,7 +6,7 @@ require 'cycle_mail'
 require 'email_send'
 require 'my_file'
 
-module ::QplaylistRememberCommentsProcessTest
+module ::QplaylistRememberCommentsProcess
   class CommentsProcessMailTest < CommentsProcessTest
     module InstanceMethods
 

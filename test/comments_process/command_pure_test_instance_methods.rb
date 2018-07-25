@@ -5,7 +5,7 @@ require_relative 'test_fixture_model'
 require 'command_pure'
 require 'email_record'
 
-module ::QplaylistRememberCommentsProcessTest
+module ::QplaylistRememberCommentsProcess
   module CommentsProcess
     class CommandPureTest < CommentsProcessTest
       module InstanceMethods

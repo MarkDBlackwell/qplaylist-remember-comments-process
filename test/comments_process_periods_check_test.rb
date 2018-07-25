@@ -3,7 +3,7 @@
 require_relative 'test_helper'
 require_relative 'comments_process_periods_check_test_instance_methods'
 
-module ::QplaylistRememberCommentsProcessTest
+module ::QplaylistRememberCommentsProcess
   class CommentsProcessPeriodsCheckTest < ::Minitest::Test
     include InstanceMethods
   end

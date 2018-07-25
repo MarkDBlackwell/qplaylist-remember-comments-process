@@ -2,7 +2,7 @@
 
 require_relative 'test_helper'
 
-module ::QplaylistRememberCommentsProcessTest
+module ::QplaylistRememberCommentsProcess
   module TestHelperMethods
     module InstanceMethods
 

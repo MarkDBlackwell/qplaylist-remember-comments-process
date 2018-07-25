@@ -2,7 +2,7 @@
 
 require 'email_generate'
 
-module ::QplaylistRememberCommentsProcessTest
+module ::QplaylistRememberCommentsProcess
   module CommentsProcess
     class EmailGenerateTest < CommentsProcessTest
       module InstanceMethods

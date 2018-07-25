@@ -2,7 +2,7 @@
 
 require 'command'
 
-module ::QplaylistRememberCommentsProcessTest
+module ::QplaylistRememberCommentsProcess
   module CommentsProcess
     class CommandTest < CommentsProcessTest
       module InstanceMethods
