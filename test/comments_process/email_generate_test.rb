@@ -5,7 +5,7 @@ require_relative 'email_generate_test_instance_methods'
 
 module ::QplaylistRememberCommentsProcess
   module CommentsProcess
-    class EmailGenerateTest < CommentsProcessTest
+    class EmailGenerateTest < QplaylistRememberCommentsProcessTest
       include InstanceMethods
     end
   end

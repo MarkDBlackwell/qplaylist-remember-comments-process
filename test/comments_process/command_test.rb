@@ -5,7 +5,7 @@ require_relative 'command_test_instance_methods'
 
 module ::QplaylistRememberCommentsProcess
   module CommentsProcess
-    class CommandTest < CommentsProcessTest
+    class CommandTest < QplaylistRememberCommentsProcessTest
       include InstanceMethods
     end
   end

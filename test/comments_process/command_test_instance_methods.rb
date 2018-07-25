@@ -4,7 +4,7 @@ require 'command'
 
 module ::QplaylistRememberCommentsProcess
   module CommentsProcess
-    class CommandTest < CommentsProcessTest
+    class CommandTest < QplaylistRememberCommentsProcessTest
       module InstanceMethods
 
         def test_comments_sequence_numbers

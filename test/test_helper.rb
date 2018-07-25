@@ -18,6 +18,6 @@ branches.each do        |branch|
 end
 
 module ::QplaylistRememberCommentsProcess
-  class CommentsProcessTest < ::Minitest::Test
+  class QplaylistRememberCommentsProcessTest < ::Minitest::Test
   end
 end

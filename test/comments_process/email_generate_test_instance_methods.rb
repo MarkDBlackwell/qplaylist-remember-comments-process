@@ -4,7 +4,7 @@ require 'email_generate'
 
 module ::QplaylistRememberCommentsProcess
   module CommentsProcess
-    class EmailGenerateTest < CommentsProcessTest
+    class EmailGenerateTest < QplaylistRememberCommentsProcessTest
       module InstanceMethods
 
         def test_email_generate

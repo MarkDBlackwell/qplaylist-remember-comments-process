@@ -7,7 +7,7 @@ require 'email_record'
 
 module ::QplaylistRememberCommentsProcess
   module CommentsProcess
-    class CommandPureTest < CommentsProcessTest
+    class CommandPureTest < QplaylistRememberCommentsProcessTest
       module InstanceMethods
 
         def setup
