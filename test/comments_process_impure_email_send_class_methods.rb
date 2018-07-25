@@ -29,13 +29,11 @@ module ::QplaylistRememberCommentsProcess
           private
 
           def my_self
-## Here, simply using 'self' doesn't work. (I don't know why.)
-## Clue: 'self' is 'CommentsProcess::Impure::EmailSend'.
-## Clue; 'CommentsProcess::Impure::EmailSend' is extended with
-##   '::CommentsProcess::Impure::EmailSend::ClassMethods',
-##   (rather than including it).
+## Here, simply using 'self' doesn't work. (I don't know why.) Clues:
+## 1. self is QplaylistRememberCommentsProcess::CommentsProcess::Impure::EmailSend.
+## 2. EmailSend is extended with ClassMethods (rather than including it).
 #-------------
-           ::QplaylistRememberCommentsProcess::CommentsProcess::Impure::EmailSend::ClassMethods
+            ClassMethods
           end
         end
       end
