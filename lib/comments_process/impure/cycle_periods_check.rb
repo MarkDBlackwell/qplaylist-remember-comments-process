@@ -6,7 +6,7 @@ module ::QplaylistRememberCommentsProcess
   module CommentsProcess
     module Impure
       module CyclePeriodsCheck
-        extend ::QplaylistRememberCommentsProcess::CommentsProcess::Impure::CyclePeriodsCheck::ClassMethods
+        extend ClassMethods
       end
     end
   end

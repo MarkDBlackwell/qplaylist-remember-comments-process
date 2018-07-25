@@ -6,7 +6,7 @@ module ::QplaylistRememberCommentsProcess
   module CommentsProcess
     module Pure
       module MyTime
-        extend ::QplaylistRememberCommentsProcess::CommentsProcess::Pure::MyTime::ClassMethods
+        extend ClassMethods
       end
     end
   end

@@ -6,7 +6,7 @@ module ::QplaylistRememberCommentsProcess
   module CommentsProcess
     module Impure
       module Logger
-        extend ::QplaylistRememberCommentsProcess::CommentsProcess::Impure::Logger::ClassMethods
+        extend ClassMethods
       end
     end
   end

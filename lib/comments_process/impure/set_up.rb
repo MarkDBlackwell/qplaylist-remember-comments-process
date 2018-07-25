@@ -6,7 +6,7 @@ module ::QplaylistRememberCommentsProcess
   module CommentsProcess
     module Impure
       module SetUp
-        extend ::QplaylistRememberCommentsProcess::CommentsProcess::Impure::SetUp::ClassMethods
+        extend ClassMethods
       end
     end
   end

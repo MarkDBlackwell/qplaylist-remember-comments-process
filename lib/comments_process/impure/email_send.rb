@@ -6,7 +6,7 @@ module ::QplaylistRememberCommentsProcess
   module CommentsProcess
     module Impure
       module EmailSend
-        extend ::QplaylistRememberCommentsProcess::CommentsProcess::Impure::EmailSend::ClassMethods
+        extend ClassMethods
       end
     end
   end
