@@ -5,7 +5,7 @@ require 'my_file'
 require 'set_up'
 
 module ::QplaylistRememberCommentsProcess
-  class CommentsProcessSetUpTest < QplaylistRememberCommentsProcessTest
+  class CommentsProcessImpureSetUpTest < QplaylistRememberCommentsProcessTest
     module InstanceMethods
 
       include TestHelperMethods
