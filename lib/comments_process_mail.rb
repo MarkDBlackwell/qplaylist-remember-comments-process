@@ -8,10 +8,5 @@ mdb March 26, 2018 - created
 require_relative 'comments_process_load_path'
 require 'cycle_mail'
 
-module ::CommentsProcess
-  module Impure
-    CycleMail.init
-    CycleMail.run
-    nil
-  end
-end
+::CommentsProcess::Impure::CycleMail.init
+::CommentsProcess::Impure::CycleMail.run

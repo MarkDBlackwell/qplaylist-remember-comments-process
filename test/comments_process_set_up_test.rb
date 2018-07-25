@@ -7,6 +7,7 @@ require 'set_up'
 
 module ::QplaylistRememberCommentsProcessTest
   class CommentsProcessSetUpTest < CommentsProcessTest
+    module InstanceMethods
 
     include TestHelperMethods
 
@@ -111,6 +112,7 @@ module ::QplaylistRememberCommentsProcessTest
         end
       end
       nil
+    end
     end
   end
 end

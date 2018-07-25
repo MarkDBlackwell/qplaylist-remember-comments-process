@@ -8,10 +8,5 @@ mdb March 19, 2018 - created
 require_relative 'comments_process_load_path'
 require 'set_up'
 
-module ::CommentsProcess
-  module Impure
-    SetUp.init
-    SetUp.run
-    nil
-  end
-end
+::CommentsProcess::Impure::SetUp.init
+::CommentsProcess::Impure::SetUp.run
