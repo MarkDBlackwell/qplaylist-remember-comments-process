@@ -5,6 +5,6 @@ require_relative 'comments_process_periods_check_test_instance_methods'
 
 module ::QplaylistRememberCommentsProcessTest
   class CommentsProcessPeriodsCheckTest < ::Minitest::Test
-    include ::QplaylistRememberCommentsProcessTest::CommentsProcessPeriodsCheckTest::InstanceMethods
+    include InstanceMethods
   end
 end

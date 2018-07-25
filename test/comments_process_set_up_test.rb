@@ -5,6 +5,6 @@ require_relative 'comments_process_set_up_test_instance_methods'
 
 module ::QplaylistRememberCommentsProcessTest
   class CommentsProcessSetUpTest < CommentsProcessTest
-    include ::QplaylistRememberCommentsProcessTest::CommentsProcessSetUpTest::InstanceMethods
+    include InstanceMethods
   end
 end
