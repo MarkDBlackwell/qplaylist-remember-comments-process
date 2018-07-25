@@ -34,20 +34,20 @@ module ::QplaylistRememberCommentsProcess
       private
 
       def assert_connect_and_send
-        assert_equal 'email-daemon@example.com', ::QplaylistRememberCommentsProcess::CommentsProcess::Impure::EmailSend. address_test
-        assert_equal 'email-daemon-password',    ::QplaylistRememberCommentsProcess::CommentsProcess::Impure::EmailSend.password_test
+        assert_equal 'email-daemon@example.com', CommentsProcess::Impure::EmailSend. address_test
+        assert_equal 'email-daemon-password',    CommentsProcess::Impure::EmailSend.password_test
         assert_equal expected_email, actual_email
         nil
       end
 
       def actual_email
-        ::QplaylistRememberCommentsProcess::CommentsProcess::Impure::EmailSend.email_test.inspect
+        CommentsProcess::Impure::EmailSend.email_test.inspect
       end
 
       def code_to_be_tested
-        ::QplaylistRememberCommentsProcess::CommentsProcess::Impure::CycleMail.init
+        CommentsProcess::Impure::CycleMail.init
         yield if block_given?
-        ::QplaylistRememberCommentsProcess::CommentsProcess::Impure::CycleMail.run
+        CommentsProcess::Impure::CycleMail.run
         nil
       end
 

@@ -41,8 +41,8 @@ module ::QplaylistRememberCommentsProcess
       private
 
       def code_to_be_tested
-        ::QplaylistRememberCommentsProcess::CommentsProcess::Impure::SetUp.init
-        ::QplaylistRememberCommentsProcess::CommentsProcess::Impure::SetUp.run
+        CommentsProcess::Impure::SetUp.init
+        CommentsProcess::Impure::SetUp.run
         nil
       end
 

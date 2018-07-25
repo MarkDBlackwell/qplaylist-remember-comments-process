@@ -43,9 +43,9 @@ module ::QplaylistRememberCommentsProcess
       private
 
       def code_to_be_tested
-        ::QplaylistRememberCommentsProcess::CommentsProcess::Impure::CyclePeriodsCheck.init
+        CommentsProcess::Impure::CyclePeriodsCheck.init
         yield if block_given?
-        ::QplaylistRememberCommentsProcess::CommentsProcess::Impure::CyclePeriodsCheck.run
+        CommentsProcess::Impure::CyclePeriodsCheck.run
         nil
       end
 

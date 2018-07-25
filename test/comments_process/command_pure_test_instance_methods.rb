@@ -11,8 +11,8 @@ module ::QplaylistRememberCommentsProcess
       module InstanceMethods
 
         def setup
-          @model = ::QplaylistRememberCommentsProcess::CommentsProcess::TestFixtureModel.new.value
-          @data  = ::QplaylistRememberCommentsProcess::CommentsProcess::TestFixtureData. new.value
+          @model = TestFixtureModel.new.value
+          @data  = TestFixtureData. new.value
         end
 
         def test_email_generate
@@ -20,14 +20,14 @@ module ::QplaylistRememberCommentsProcess
           email_address_disk_jockey = 'bobsmith@example.com'
           name_first_disk_jockey = 'Bob'
           subject = 'Sun 5 to 7 PM likes'
-          email = ::QplaylistRememberCommentsProcess::CommentsProcess::Pure::EmailRecord.new email_address_disk_jockey, body, name_first_disk_jockey, subject
+          email = Pure::EmailRecord.new email_address_disk_jockey, body, name_first_disk_jockey, subject
           trace_write = false
           data_log = ["email #{email.inspect}", trace_write]
           expected = [
               [:do_log_write, data_log],
               [:do_email_send, email],
               ]
-          actual = ::QplaylistRememberCommentsProcess::CommentsProcess::Pure::CommandPure.send :do_email_generate, @model, @data
+          actual = Pure::CommandPure.send :do_email_generate, @model, @data
           assert_equal expected, actual
         end
 
