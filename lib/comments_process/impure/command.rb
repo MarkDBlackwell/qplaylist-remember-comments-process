@@ -2,10 +2,12 @@
 
 require 'command_class_methods'
 
-module ::CommentsProcess
-  module Impure
-    module Command
-      extend ::CommentsProcess::Impure::Command::ClassMethods
+module ::QplaylistRememberCommentsProcess
+  module CommentsProcess
+    module Impure
+      module Command
+        extend ::QplaylistRememberCommentsProcess::CommentsProcess::Impure::Command::ClassMethods
+      end
     end
   end
 end

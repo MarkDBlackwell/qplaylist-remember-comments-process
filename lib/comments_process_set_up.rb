@@ -8,5 +8,11 @@ mdb March 19, 2018 - created
 require_relative 'comments_process_load_path'
 require 'set_up'
 
-::CommentsProcess::Impure::SetUp.init
-::CommentsProcess::Impure::SetUp.run
+module ::QplaylistRememberCommentsProcess
+  module CommentsProcess
+    module Impure
+      SetUp.init
+      SetUp.run
+    end
+  end
+end

@@ -43,9 +43,9 @@ module ::QplaylistRememberCommentsProcess
       private
 
       def code_to_be_tested
-        ::CommentsProcess::Impure::CyclePeriodsCheck.init
+        ::QplaylistRememberCommentsProcess::CommentsProcess::Impure::CyclePeriodsCheck.init
         yield if block_given?
-        ::CommentsProcess::Impure::CyclePeriodsCheck.run
+        ::QplaylistRememberCommentsProcess::CommentsProcess::Impure::CyclePeriodsCheck.run
         nil
       end
 
@@ -58,11 +58,11 @@ module ::QplaylistRememberCommentsProcess
       end
 
       def stub_things
-        ::          CommentsProcess::Pure::MyFile.stub :filename_environment_file, filename_environment_file_fixture     do
-          ::        CommentsProcess::Pure::MyFile.stub :filename_log,              filename_output_log                   do
-            ::      CommentsProcess::Pure::MyFile.stub :folder_data_applications,  folder_data_applications              do
-              ::    CommentsProcess::Pure::MyFile.stub :folder_data_own,           folder_data_own                       do
-                ::  Time.stub                          :now,                       time_now                              do
+        ::        QplaylistRememberCommentsProcess::CommentsProcess::Pure::MyFile.stub :filename_environment_file, filename_environment_file_fixture do
+          ::      QplaylistRememberCommentsProcess::CommentsProcess::Pure::MyFile.stub :filename_log,              filename_output_log               do
+            ::    QplaylistRememberCommentsProcess::CommentsProcess::Pure::MyFile.stub :folder_data_applications,  folder_data_applications          do
+              ::  QplaylistRememberCommentsProcess::CommentsProcess::Pure::MyFile.stub :folder_data_own,           folder_data_own                   do
+                ::Time.stub                                                            :now,                       time_now                          do
                   yield
                 end
               end

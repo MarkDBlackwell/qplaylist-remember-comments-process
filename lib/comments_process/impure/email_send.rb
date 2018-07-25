@@ -2,10 +2,12 @@
 
 require 'email_send_class_methods'
 
-module ::CommentsProcess
-  module Impure
-    module EmailSend
-      extend ::CommentsProcess::Impure::EmailSend::ClassMethods
+module ::QplaylistRememberCommentsProcess
+  module CommentsProcess
+    module Impure
+      module EmailSend
+        extend ::QplaylistRememberCommentsProcess::CommentsProcess::Impure::EmailSend::ClassMethods
+      end
     end
   end
 end

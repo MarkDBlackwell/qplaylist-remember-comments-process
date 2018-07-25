@@ -103,21 +103,21 @@ module ::QplaylistRememberCommentsProcess
       end
 
       def impure_init_define
-        unless ::CommentsProcess         .const_defined? :Impure, false
-               ::CommentsProcess         .const_set      :Impure, Module.new
+        unless ::QplaylistRememberCommentsProcess::CommentsProcess         .const_defined? :Impure, false
+               ::QplaylistRememberCommentsProcess::CommentsProcess         .const_set      :Impure, Module.new
         end
-        unless ::CommentsProcess::Impure .const_defined? :Init,   false
-               ::CommentsProcess::Impure .const_set      :Init,   Module.new
+        unless ::QplaylistRememberCommentsProcess::CommentsProcess::Impure .const_defined? :Init,   false
+               ::QplaylistRememberCommentsProcess::CommentsProcess::Impure .const_set      :Init,   Module.new
         end
       end
 
       def model
-        ::CommentsProcess::Impure::Init.instance_variable_get :@model_value
+        ::QplaylistRememberCommentsProcess::CommentsProcess::Impure::Init.instance_variable_get :@model_value
       end
 
       def model_clear
         impure_init_define
-        ::CommentsProcess::Impure::Init.instance_variable_set :@model_value, nil
+        ::QplaylistRememberCommentsProcess::CommentsProcess::Impure::Init.instance_variable_set :@model_value, nil
       end
 
       def time_now

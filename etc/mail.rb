@@ -9,37 +9,39 @@ mdb March 20, 2018 - created
 
 require_relative 'methods'
 
-include ::Methods
+module ::QplaylistRememberCommentsProcess
+  include Methods
 
 # Don't greet.
 
 # Navigate to the project root directory:
-::Dir.chdir project_root
+  ::Dir.chdir project_root
 
 # Check the periods file:
-is_tentative = true
-command_run %w[bundle exec ruby] + [filename_program_periods_check], is_tentative
+  is_tentative = true
+  command_run %w[bundle exec ruby] + [filename_program_periods_check], is_tentative
 
-::Kernel.exit child_status_integer unless command_ran_best
+  ::Kernel.exit child_status_integer unless command_ran_best
 
 # Navigate to download files from the webserver computer:
-::Dir.chdir directory_volatiles
+  ::Dir.chdir directory_volatiles
 
-filename = filename_command_ftp 'get'
+  filename = filename_command_ftp 'get'
 
-confirm_ftp_command_file_exists filename
+  confirm_ftp_command_file_exists filename
 
 # Retrieve listener comments:
-argument_ftp = "-s:#{filename}"
-command_run %w[ftp] + [argument_ftp]
+  argument_ftp = "-s:#{filename}"
+  command_run %w[ftp] + [argument_ftp]
 
-::Kernel.exit child_status_integer unless command_ran_best
+  ::Kernel.exit child_status_integer unless command_ran_best
 
 # Navigate to the project root directory:
-::Dir.chdir project_root
+  ::Dir.chdir project_root
 
 # Process listener comments:
-is_tentative = true
-command_run %w[bundle exec ruby] + [filename_program_mail], is_tentative
+  is_tentative = true
+  command_run %w[bundle exec ruby] + [filename_program_mail], is_tentative
 
-::Kernel.exit child_status_integer unless command_ran_best
+  ::Kernel.exit child_status_integer unless command_ran_best
+end

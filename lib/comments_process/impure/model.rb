@@ -2,10 +2,12 @@
 
 require 'model_instance_methods'
 
-module ::CommentsProcess
-  module Impure
-    class Model < ::Hash
-      include InstanceMethods
+module ::QplaylistRememberCommentsProcess
+  module CommentsProcess
+    module Impure
+      class Model < ::Hash
+        include InstanceMethods
+      end
     end
   end
 end

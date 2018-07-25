@@ -2,10 +2,12 @@
 
 require 'my_file_class_methods'
 
-module ::CommentsProcess
-  module Pure
-    module MyFile
-      extend ::CommentsProcess::Pure::MyFile::ClassMethods
+module ::QplaylistRememberCommentsProcess
+  module CommentsProcess
+    module Pure
+      module MyFile
+        extend ::QplaylistRememberCommentsProcess::CommentsProcess::Pure::MyFile::ClassMethods
+      end
     end
   end
 end

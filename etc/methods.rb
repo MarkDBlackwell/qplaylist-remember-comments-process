@@ -1,5 +1,9 @@
 # coding: utf-8
 
-module ::Methods
-  include InstanceMethods
+require_relative 'methods_instance_methods'
+
+module ::QplaylistRememberCommentsProcess
+  module Methods
+    include InstanceMethods
+  end
 end

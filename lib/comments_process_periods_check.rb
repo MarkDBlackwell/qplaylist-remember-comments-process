@@ -8,5 +8,11 @@ mdb March 26, 2018 - created
 require_relative 'comments_process_load_path'
 require 'cycle_periods_check'
 
-::CommentsProcess::Impure::CyclePeriodsCheck.init
-::CommentsProcess::Impure::CyclePeriodsCheck.run
+module ::QplaylistRememberCommentsProcess
+  module CommentsProcess
+    module Impure
+      CyclePeriodsCheck.init
+      CyclePeriodsCheck.run
+    end
+  end
+end

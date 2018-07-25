@@ -2,10 +2,12 @@
 
 require 'songs_hash_instance_methods'
 
-module ::CommentsProcess
-  module Pure
-    class SongsHash
-      include InstanceMethods
+module ::QplaylistRememberCommentsProcess
+  module CommentsProcess
+    module Pure
+      class SongsHash
+        include InstanceMethods
+      end
     end
   end
 end

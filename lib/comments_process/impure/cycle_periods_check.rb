@@ -2,10 +2,12 @@
 
 require 'cycle_periods_check_class_methods'
 
-module ::CommentsProcess
-  module Impure
-    module CyclePeriodsCheck
-      extend ::CommentsProcess::Impure::CyclePeriodsCheck::ClassMethods
+module ::QplaylistRememberCommentsProcess
+  module CommentsProcess
+    module Impure
+      module CyclePeriodsCheck
+        extend ::QplaylistRememberCommentsProcess::CommentsProcess::Impure::CyclePeriodsCheck::ClassMethods
+      end
     end
   end
 end

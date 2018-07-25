@@ -8,5 +8,11 @@ mdb March 26, 2018 - created
 require_relative 'comments_process_load_path'
 require 'cycle_mail'
 
-::CommentsProcess::Impure::CycleMail.init
-::CommentsProcess::Impure::CycleMail.run
+module ::QplaylistRememberCommentsProcess
+  module CommentsProcess
+    module Impure
+      CycleMail.init
+      CycleMail.run
+    end
+  end
+end

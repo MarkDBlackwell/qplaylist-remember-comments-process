@@ -2,10 +2,12 @@
 
 require 'cycle_mail_class_methods'
 
-module ::CommentsProcess
-  module Impure
-    module CycleMail
-      extend ::CommentsProcess::Impure::CycleMail::ClassMethods
+module ::QplaylistRememberCommentsProcess
+  module CommentsProcess
+    module Impure
+      module CycleMail
+        extend ::QplaylistRememberCommentsProcess::CommentsProcess::Impure::CycleMail::ClassMethods
+      end
     end
   end
 end

@@ -1,7 +1,7 @@
 # coding: utf-8
 
 module ::QplaylistRememberCommentsProcess
-  module ::CommentsProcess
+  module CommentsProcess
     module Impure
       module EmailSend
         module ClassMethods
@@ -35,7 +35,7 @@ module ::QplaylistRememberCommentsProcess
 ##   '::CommentsProcess::Impure::EmailSend::ClassMethods',
 ##   (rather than including it).
 #-------------
-           ::CommentsProcess::Impure::EmailSend::ClassMethods
+           ::QplaylistRememberCommentsProcess::CommentsProcess::Impure::EmailSend::ClassMethods
           end
         end
       end

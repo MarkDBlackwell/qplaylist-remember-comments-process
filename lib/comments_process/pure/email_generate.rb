@@ -2,10 +2,12 @@
 
 require 'email_generate_class_methods'
 
-module ::CommentsProcess
-  module Pure
-    module EmailGenerate
-      extend ::CommentsProcess::Pure::EmailGenerate::ClassMethods
+module ::QplaylistRememberCommentsProcess
+  module CommentsProcess
+    module Pure
+      module EmailGenerate
+        extend ::QplaylistRememberCommentsProcess::CommentsProcess::Pure::EmailGenerate::ClassMethods
+      end
     end
   end
 end

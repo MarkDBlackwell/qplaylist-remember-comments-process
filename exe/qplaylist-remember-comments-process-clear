@@ -9,15 +9,17 @@ mdb March 20, 2018 - created
 
 require_relative '../etc/methods'
 
-extend ::Methods
+module ::QplaylistRememberCommentsProcess
+  extend Methods
 
 # Greet:
-greeting_at_opening
+  greeting_at_opening
 
-filename = filename_command_ftp 'delete'
+  filename = filename_command_ftp 'delete'
 
-confirm_ftp_command_file_exists filename
+  confirm_ftp_command_file_exists filename
 
 # Clear listener comments from the webserver computer:
-argument_ftp = "-s:#{filename}"
-command_run %w[ftp] + [argument_ftp]
+  argument_ftp = "-s:#{filename}"
+  command_run %w[ftp] + [argument_ftp]
+end

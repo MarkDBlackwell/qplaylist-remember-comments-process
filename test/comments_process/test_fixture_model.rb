@@ -1,7 +1,7 @@
 # coding: utf-8
 
 module ::QplaylistRememberCommentsProcess
-  module ::CommentsProcess
+  module CommentsProcess
     class TestFixtureModel
 
       attr_reader :value

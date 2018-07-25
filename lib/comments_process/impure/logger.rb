@@ -2,10 +2,12 @@
 
 require 'logger_class_methods'
 
-module ::CommentsProcess
-  module Impure
-    module Logger
-      extend ::CommentsProcess::Impure::Logger::ClassMethods
+module ::QplaylistRememberCommentsProcess
+  module CommentsProcess
+    module Impure
+      module Logger
+        extend ::QplaylistRememberCommentsProcess::CommentsProcess::Impure::Logger::ClassMethods
+      end
     end
   end
 end

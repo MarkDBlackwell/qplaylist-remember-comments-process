@@ -3,7 +3,7 @@
 require 'period_record'
 
 module ::QplaylistRememberCommentsProcess
-  module ::CommentsProcess
+  module CommentsProcess
     class TestFixtureData
 
       attr_reader :value
