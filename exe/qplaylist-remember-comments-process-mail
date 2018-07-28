@@ -14,6 +14,8 @@ module ::QplaylistRememberCommentsProcess
 
 # Don't greet.
 
+# TODO: Consider doing 'bundle install'.
+
 # Navigate to run Windows batch file:
   ::Dir.chdir directory_etc
 

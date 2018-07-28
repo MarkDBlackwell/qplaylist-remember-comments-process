@@ -19,7 +19,9 @@ module ::QplaylistRememberCommentsProcess
   ::Dir.chdir project_root
 
 # Install necessary gems:
-  command_run %w[bundle install --without development]
+## 'bundle install --without development test' is failing to exclude those dependencies:
+##command_run %w[bundle install --without development test]
+  command_run %w[bundle install]
 
   ::Kernel.exit child_status_integer unless command_ran_best
 
