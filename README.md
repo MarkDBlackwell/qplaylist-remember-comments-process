@@ -1,6 +1,7 @@
 ### Remember songs comments process (for Qplaylist)
 
 Copyright (C) 2018 Mark D. Blackwell.
+   All rights reserved.
 
 ## Overview
 

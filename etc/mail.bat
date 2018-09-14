@@ -1,7 +1,13 @@
-rem For Qplaylist Remember Songs Comments Process
+rem Copyright (C) 2018 Mark D. Blackwell.
+rem    All rights reserved.
+rem    This program is distributed in the hope that it will be useful,
+rem    but WITHOUT ANY WARRANTY; without even the implied warranty of
+rem    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 rem Author: Mark D. Blackwell (google me)
 rem mdb March 20, 2018 - created
+
+rem For Qplaylist Remember Songs Comments Process
 
 rem #--------------
 rem Don't greet.

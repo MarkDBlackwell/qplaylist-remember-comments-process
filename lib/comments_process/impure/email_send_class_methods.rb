@@ -1,5 +1,13 @@
 # coding: utf-8
 
+=begin
+Copyright (C) 2018 Mark D. Blackwell.
+   All rights reserved.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+=end
+
 require 'gmail'
 
 module ::QplaylistRememberCommentsProcess
@@ -10,7 +18,15 @@ module ::QplaylistRememberCommentsProcess
 
           def email_send(model, email)
             params = varying_ordered.map{|e| model[:"email_#{e}_daemon"]}
-            connect_and_send email, *params
+print 'email='; pp email
+#           connect_and_send email, *params
+
+            connect_and_send *[
+            email,
+#           'email-daemon@example.com',
+#           'email-reply-to-daemon@example.com',
+#           'email-daemon-password',
+            ]
             model[:email_sent_count] += 1
             nil
           end

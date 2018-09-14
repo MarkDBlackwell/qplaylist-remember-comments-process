@@ -1,7 +1,15 @@
 # coding: utf-8
 
+=begin
+Copyright (C) 2018 Mark D. Blackwell.
+   All rights reserved.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+=end
+
 require_relative 'test_helper_methods'
-require_relative 'comments_process_impure_email_send_class_methods'
+#require_relative 'comments_process_impure_email_send_class_methods'
 require 'cycle_mail'
 require 'email_send'
 require 'my_file'
@@ -18,31 +26,44 @@ module ::QplaylistRememberCommentsProcess
       end
 
       def test_all
+        mock = ::Minitest::Mock.new
+        mock.expect :call, nil, [
+            email_expected,
+#           'email-daemon@example.com',
+#           'email-reply-to-daemon@example.com',
+#           'email-daemon-password',
+            ]
         stub_things do
+          ::QplaylistRememberCommentsProcess::CommentsProcess::Impure::EmailSend.stub :connect_and_send, mock do
 ##assert_raises SystemExit do
-          file_clear filename_output_log
-          code_to_be_tested do
-            model[:schedule_source] = filename_schedule_source
-          end
-          assert_connect_and_send
-          assert_equal_file_content expected_filename_output_log, filename_output_log
+            file_clear filename_output_log
+            code_to_be_tested do
+              model[:schedule_source] = filename_schedule_source
+            end
+#print '@address_test='; pp @address_test
+#           assert_connect_and_send
+#           assert_equal_file_content expected_filename_output_log, filename_output_log
 ##end
+          end
         end
+#       assert mock.verify
         nil
       end
 
       private
 
-      def assert_connect_and_send
-        assert_equal 'email-daemon@example.com', CommentsProcess::Impure::EmailSend. address_test
-        assert_equal 'email-daemon-password',    CommentsProcess::Impure::EmailSend.password_test
-        assert_equal expected_email, actual_email
-        nil
-      end
+#     def assert_connect_and_send
+#       assert_equal 'email-daemon@example.com', CommentsProcess::Impure::EmailSend. address_test
+#       assert_equal 'email-daemon-password',    CommentsProcess::Impure::EmailSend.password_test
 
-      def actual_email
-        CommentsProcess::Impure::EmailSend.email_test.inspect
-      end
+#       assert_equal 'email-daemon@example.com', CommentsProcess::Impure::EmailSend.instance_variable_get(:@address_test)
+#       assert_equal 'email-daemon-password',    CommentsProcess::Impure::EmailSend.instance_variable_get(:@password_test)
+#       assert_equal 'email-daemon@example.com', @address_test
+#       assert_equal 'zzemail-daemon@example.com', @address_reply_to_test
+#       assert_equal 'email-daemon-password',    @password_test
+#       assert_equal email_expected, email_actual
+#       nil
+#     end
 
       def code_to_be_tested
         CommentsProcess::Impure::CycleMail.init
@@ -51,7 +72,29 @@ module ::QplaylistRememberCommentsProcess
         nil
       end
 
-      def expected_email
+#     def connect_and_send_arguments
+#     end
+
+#     def connect_and_send_old(*args)
+#       names_ordered = %w[
+#           email
+#           address
+#           address_reply_to
+#           password
+#           ]
+#       names_ordered.zip(args).each do |name,        arg|
+#         instance_variable_set     :"@#{name}_test", arg
+#       end
+#       @email_test, @address_test, @address_reply_to_test, @password_test = args
+#     end
+
+      def email_actual
+#       CommentsProcess::Impure::EmailSend.email_test.inspect
+        CommentsProcess::Impure::EmailSend.instance_variable_get(:@email_test).inspect
+#       @email_test.inspect
+      end
+
+      def email_expected
         filename = filename_fixture 'email.txt'
         ::File.open filename, 'r' do |f|
           return f.read
