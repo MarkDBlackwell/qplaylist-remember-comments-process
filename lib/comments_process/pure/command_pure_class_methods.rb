@@ -63,7 +63,7 @@ module ::QplaylistRememberCommentsProcess
 
           def window_start_end(model, period)
             now = MyTime.current_ymd model
-            window_end = ::Time.new(*now, period.hour_end)
+            window_end = ::Time.new(*now, period.hour_end) + MyTime.few_minutes
             window_start_provisional = ::Time.new(*now, period.hour_start) - MyTime.few_minutes
             if period.hour_start <= period.hour_end
               window_start = window_start_provisional
