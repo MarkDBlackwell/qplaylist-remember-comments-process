@@ -8,14 +8,9 @@ Copyright (C) 2018 Mark D. Blackwell.
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 =end
 
-=begin
-Author: Mark D. Blackwell (google me)
-mdb March 20, 2018 - created
-=end
-
 require 'English'
 
-module ::QplaylistRememberCommentsProcess
+module ::Command
   module Methods
     module InstanceMethods
 
@@ -28,8 +23,7 @@ module ::QplaylistRememberCommentsProcess
       end
 
       def command_ran_best
-        exit_status_okay == child_status_integer
-      end
+        exit_status_okay == child_status_integer      end
 
       def command_run(array, is_tentative=false)
         ::Kernel.system *array

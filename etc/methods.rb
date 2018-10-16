@@ -10,7 +10,7 @@ Copyright (C) 2018 Mark D. Blackwell.
 
 require_relative 'methods_instance_methods'
 
-module ::QplaylistRememberCommentsProcess
+module ::Command
   module Methods
     include InstanceMethods
   end

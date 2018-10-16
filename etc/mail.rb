@@ -9,15 +9,12 @@ Copyright (C) 2018 Mark D. Blackwell.
 =end
 
 =begin
-Author: Mark D. Blackwell (google me)
-mdb March 20, 2018 - created
-
 For Qplaylist Remember Songs Comments Process
 =end
 
 require_relative 'methods'
 
-module ::QplaylistRememberCommentsProcess
+module ::Command
   include Methods
 
 # Don't greet.

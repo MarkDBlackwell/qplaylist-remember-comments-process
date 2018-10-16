@@ -21,12 +21,12 @@ module ::QplaylistRememberCommentsProcess
 print 'email='; pp email
 #           connect_and_send email, *params
 
-            connect_and_send *[
+            connect_and_send(*[
             email,
 #           'email-daemon@example.com',
 #           'email-reply-to-daemon@example.com',
 #           'email-daemon-password',
-            ]
+            ])
             model[:email_sent_count] += 1
             nil
           end

@@ -10,15 +10,12 @@ Copyright (C) 2018 Mark D. Blackwell.
 
 =begin
 Set up, for Qplaylist Remember Songs Comments Process
-
-Author: Mark D. Blackwell (google me)
-mdb March 20, 2018 - created
 =end
 
 require_relative '../etc/methods'
 
-module ::QplaylistRememberCommentsProcess
-  include Methods
+module ::Command
+  extend Methods
 
 # Greet:
   greeting_at_opening
