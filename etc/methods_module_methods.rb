@@ -12,7 +12,7 @@ require 'English'
 
 module ::Command
   module Methods
-    module InstanceMethods
+    module ModuleMethods
 
       def child_status
         $CHILD_STATUS

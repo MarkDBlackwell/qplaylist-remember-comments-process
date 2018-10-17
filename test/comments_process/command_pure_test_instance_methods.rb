@@ -10,7 +10,7 @@ Copyright (C) 2018 Mark D. Blackwell.
 
 require_relative 'test_fixture_data'
 require_relative 'test_fixture_model'
-require 'command_pure'
+require 'command_pure_module_methods'
 require 'email_record'
 
 module ::QplaylistRememberCommentsProcess

@@ -9,7 +9,7 @@ Copyright (C) 2018 Mark D. Blackwell.
 =end
 
 require_relative 'comments_process_load_path'
-require 'set_up'
+require 'set_up_module_methods'
 
 module ::QplaylistRememberCommentsProcess
   module CommentsProcess

@@ -12,7 +12,7 @@ module ::QplaylistRememberCommentsProcess
   module CommentsProcess
     module Pure
       module MyFile
-        module ClassMethods
+        module ModuleMethods
 
           def file_lines(filename)
             ::File.open filename, 'r' do |f|

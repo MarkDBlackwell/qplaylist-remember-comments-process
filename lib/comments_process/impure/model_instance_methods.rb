@@ -20,6 +20,8 @@ module ::QplaylistRememberCommentsProcess
             ::Marshal.load dumped
           end
         end
+
+        include InstanceMethods
       end
     end
   end

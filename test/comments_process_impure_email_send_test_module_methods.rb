@@ -12,7 +12,7 @@ module ::QplaylistRememberCommentsProcess
   module CommentsProcess
     module Impure
       module EmailSend
-        module ClassMethods
+        module ModuleMethods
 
 ## Keep before attr_reader:
           def self.names_ordered_test

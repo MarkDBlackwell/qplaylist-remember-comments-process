@@ -25,8 +25,6 @@ module ::QplaylistRememberCommentsProcess
         end
 
         attr_reader(*names_ordered)
-
-        include InstanceMethods
       end
     end
   end

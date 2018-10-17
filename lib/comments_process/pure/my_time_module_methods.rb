@@ -12,7 +12,7 @@ module ::QplaylistRememberCommentsProcess
   module CommentsProcess
     module Pure
       module MyTime
-        module ClassMethods
+        module ModuleMethods
 
           def current_hour(model)
             current_time(model).hour
@@ -89,6 +89,8 @@ module ::QplaylistRememberCommentsProcess
                 ]
           end
         end
+
+        extend ModuleMethods
       end
     end
   end

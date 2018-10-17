@@ -8,8 +8,8 @@ Copyright (C) 2018 Mark D. Blackwell.
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 =end
 
-require 'comments_by_timestamp_hash'
-require 'helper'
+require 'comments_by_timestamp_hash_instance_methods'
+require 'helper_module_methods'
 
 module ::QplaylistRememberCommentsProcess
   module CommentsProcess
@@ -17,7 +17,7 @@ module ::QplaylistRememberCommentsProcess
       class SongsHash
         module InstanceMethods
 
-          include Helper
+          include Helper::ModuleMethods
 
           def initialize(period_comments)
             @songs = ::Hash.new
@@ -78,6 +78,8 @@ module ::QplaylistRememberCommentsProcess
             result
           end
         end
+
+        include InstanceMethods
       end
     end
   end

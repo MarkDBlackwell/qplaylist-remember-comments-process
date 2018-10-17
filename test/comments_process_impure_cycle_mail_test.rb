@@ -8,17 +8,18 @@ Copyright (C) 2018 Mark D. Blackwell.
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 =end
 
-require_relative 'test_helper_methods'
-#require_relative 'comments_process_impure_email_send_class_methods'
-require 'cycle_mail'
-require 'email_send'
-require 'my_file'
+require_relative 'test_helper'
+require_relative 'test_helper_methods_instance_methods'
+#require_relative 'comments_process_impure_email_send_test_module_methods'
+require 'cycle_mail_module_methods'
+require 'email_send_module_methods'
+require 'my_file_module_methods'
 
 module ::QplaylistRememberCommentsProcess
   class CommentsProcessImpureCycleMailTest < QplaylistRememberCommentsProcessTest
     module InstanceMethods
 
-      include TestHelperMethods
+      include TestHelperMethods::InstanceMethods
 
       def setup
         model_clear

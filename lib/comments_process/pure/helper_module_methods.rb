@@ -8,13 +8,13 @@ Copyright (C) 2018 Mark D. Blackwell.
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 =end
 
-require 'my_file'
+require 'my_file_module_methods'
 
 module ::QplaylistRememberCommentsProcess
   module CommentsProcess
     module Pure
       module Helper
-        module InstanceMethods
+        module ModuleMethods
 
           def comments_array_dump(comments_array, name)
             ::File.open MyFile.filename_dump, 'a' do |f|

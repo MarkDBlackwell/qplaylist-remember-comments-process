@@ -9,17 +9,17 @@ Copyright (C) 2018 Mark D. Blackwell.
 =end
 
 require 'email_record'
-require 'helper'
-require 'my_time'
-require 'songs_hash'
+require 'helper_module_methods'
+require 'my_time_module_methods'
+require 'songs_hash_instance_methods'
 
 module ::QplaylistRememberCommentsProcess
   module CommentsProcess
     module Pure
       module EmailGenerate
-        module ClassMethods
+        module ModuleMethods
 
-          include Helper
+          include Helper::ModuleMethods
 
           def generate(model, period, period_comments_array)
             subject = "#{period.weekday.capitalize} #{period_string period} likes"
@@ -163,6 +163,8 @@ END
             result_array
           end
         end
+
+        extend ModuleMethods
       end
     end
   end

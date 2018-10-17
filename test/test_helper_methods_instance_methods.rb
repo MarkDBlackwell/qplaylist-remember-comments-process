@@ -8,8 +8,6 @@ Copyright (C) 2018 Mark D. Blackwell.
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 =end
 
-require_relative 'test_helper'
-
 module ::QplaylistRememberCommentsProcess
   module TestHelperMethods
     module InstanceMethods

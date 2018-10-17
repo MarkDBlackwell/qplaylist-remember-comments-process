@@ -8,13 +8,13 @@ Copyright (C) 2018 Mark D. Blackwell.
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 =end
 
-require 'command'
+require 'command_module_methods'
 
 module ::QplaylistRememberCommentsProcess
   module CommentsProcess
     module Impure
       module Commands
-        module ClassMethods
+        module ModuleMethods
 
           attr_accessor :model
 

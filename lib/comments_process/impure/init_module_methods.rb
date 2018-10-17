@@ -9,14 +9,14 @@ Copyright (C) 2018 Mark D. Blackwell.
 =end
 
 require 'logger'
-require 'model'
-require 'my_file'
+require 'model_instance_methods'
+require 'my_file_module_methods'
 
 module ::QplaylistRememberCommentsProcess
   module CommentsProcess
     module Impure
       module Init
-        module ClassMethods
+        module ModuleMethods
 
           def run
 # Keep first:

@@ -19,6 +19,8 @@ module ::QplaylistRememberCommentsProcess
           attr_accessor :rest_improved
           attr_accessor :seq
         end
+
+        include InstanceMethods
       end
     end
   end

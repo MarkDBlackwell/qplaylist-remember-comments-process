@@ -36,6 +36,8 @@ module ::QplaylistRememberCommentsProcess
             grouped.sort.to_h
           end
         end
+
+        include InstanceMethods
       end
     end
   end

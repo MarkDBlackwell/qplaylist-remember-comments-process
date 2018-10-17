@@ -8,14 +8,14 @@ Copyright (C) 2018 Mark D. Blackwell.
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 =end
 
-require 'email_generate'
-require 'my_time'
+require 'email_generate_module_methods'
+require 'my_time_module_methods'
 
 module ::QplaylistRememberCommentsProcess
   module CommentsProcess
     module Pure
       module CommandPure
-        module ClassMethods
+        module ModuleMethods
 
           private
 
@@ -73,6 +73,8 @@ module ::QplaylistRememberCommentsProcess
             [window_start, window_end]
           end
         end
+
+        extend ModuleMethods
       end
     end
   end

@@ -8,15 +8,16 @@ Copyright (C) 2018 Mark D. Blackwell.
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 =end
 
-require_relative 'test_helper_methods'
-require 'my_file'
-require 'set_up'
+require_relative 'test_helper'
+require_relative 'test_helper_methods_instance_methods'
+require 'my_file_module_methods'
+require 'set_up_module_methods'
 
 module ::QplaylistRememberCommentsProcess
   class CommentsProcessImpureSetUpTest < QplaylistRememberCommentsProcessTest
     module InstanceMethods
 
-      include TestHelperMethods
+      include TestHelperMethods::InstanceMethods
 
       def setup
         model_clear

@@ -14,7 +14,7 @@ module ::QplaylistRememberCommentsProcess
   module CommentsProcess
     module Impure
       module EmailSend
-        module ClassMethods
+        module ModuleMethods
 
           def email_send(model, email)
             params = varying_ordered.map{|e| model[:"email_#{e}_daemon"]}
