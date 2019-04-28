@@ -154,6 +154,8 @@ module ::QplaylistRememberCommentsProcess
             !exit_desired
           end
         end
+
+        extend ModuleMethods
       end
     end
   end

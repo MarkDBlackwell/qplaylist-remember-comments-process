@@ -17,16 +17,16 @@ module ::QplaylistRememberCommentsProcess
         module ModuleMethods
 
           def email_send(model, email)
+#print 'email='; pp email
             params = varying_ordered.map{|e| model[:"email_#{e}_daemon"]}
-print 'email='; pp email
-#           connect_and_send email, *params
+            connect_and_send email, *params
 
-            connect_and_send(*[
-            email,
-#           'email-daemon@example.com',
-#           'email-reply-to-daemon@example.com',
-#           'email-daemon-password',
-            ])
+#           connect_and_send(*[
+#               email,
+#               'email-daemon@example.com',
+#               'email-reply-to-daemon@example.com',
+#               'email-daemon-password',
+#               ])
             model[:email_sent_count] += 1
             nil
           end
@@ -54,6 +54,8 @@ print 'email='; pp email
                 ]
           end
         end
+
+        extend ModuleMethods
       end
     end
   end

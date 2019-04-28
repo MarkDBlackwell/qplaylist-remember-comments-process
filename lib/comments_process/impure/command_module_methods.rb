@@ -12,7 +12,7 @@ require 'command_pure_module_methods'
 require 'comment_record_instance_methods'
 require 'email_send_module_methods'
 require 'helper_module_methods'
-require 'logger'
+require 'logger_module_methods'
 require 'my_file_module_methods'
 require 'period_record'
 

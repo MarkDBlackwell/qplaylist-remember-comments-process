@@ -84,6 +84,8 @@ module ::QplaylistRememberCommentsProcess
             ::File.realpath target
           end
         end
+
+        extend ModuleMethods
       end
     end
   end

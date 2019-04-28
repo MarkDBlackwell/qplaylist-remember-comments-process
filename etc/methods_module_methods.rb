@@ -23,7 +23,8 @@ module ::Command
       end
 
       def command_ran_best
-        exit_status_okay == child_status_integer      end
+        exit_status_okay == child_status_integer
+      end
 
       def command_run(array, is_tentative=false)
         ::Kernel.system *array
@@ -157,5 +158,7 @@ module ::Command
         'comments_process'
       end
     end
+
+    include ModuleMethods
   end
 end

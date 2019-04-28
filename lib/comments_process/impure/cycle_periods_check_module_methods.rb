@@ -46,6 +46,8 @@ module ::QplaylistRememberCommentsProcess
             nil
           end
         end
+
+        extend ModuleMethods
       end
     end
   end

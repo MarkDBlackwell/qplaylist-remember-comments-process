@@ -8,7 +8,7 @@ Copyright (C) 2018 Mark D. Blackwell.
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 =end
 
-require 'logger'
+require 'logger_module_methods'
 require 'model_instance_methods'
 require 'my_file_module_methods'
 
@@ -84,6 +84,8 @@ module ::QplaylistRememberCommentsProcess
             @model_value ||= Model.new
           end
         end
+
+        extend ModuleMethods
       end
     end
   end

@@ -48,6 +48,8 @@ module ::QplaylistRememberCommentsProcess
             ::Time.now.strftime format
           end
         end
+
+        extend ModuleMethods
       end
     end
   end
