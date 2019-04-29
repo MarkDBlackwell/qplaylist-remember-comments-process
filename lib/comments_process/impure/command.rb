@@ -43,35 +43,6 @@ module ::QplaylistRememberCommentsProcess
 
           private
 
-          def command_push(command)
-            @commands_to_add.push command
-            nil
-          end
-
-          def commands_pure
-# Keep alphabetized:
-            %i[
-                do_email_generate
-                do_period_comments_generate
-                do_periods_process
-                ]
-          end
-
-          def comment_regexp
-# Keep ')' here:
-            @comment_regexp_value ||= ::Regexp.new(/#.*+$/)
-          end
-
-          def comments_sequentialize(comments)
-## Add a sequence field, because Ruby's Array#sort doesn't guarantee
-## that it preserves order. See:
-## https://stackoverflow.com/a/15442966/1136063
-#-------------
-            seq = sequence_numbers comments
-            comments.zip(seq).each{|comment,sequence| comment.seq = sequence}
-            nil
-          end
-
           def do_comments_read
             lines = Pure::MyFile.file_lines Pure::MyFile.filename_comments
             comments = lines.map{|e| CommentRecord.new e}
@@ -100,6 +71,37 @@ module ::QplaylistRememberCommentsProcess
             wday = Pure::MyTime.current_wday @model
             hour = Pure::MyTime.current_hour @model
             @model[:periods_current] = periods.select{|e| e.matches wday, hour}
+            nil
+          end
+
+# Internal:
+
+          def command_push(command)
+            @commands_to_add.push command
+            nil
+          end
+
+          def commands_pure
+# Keep alphabetized:
+            %i[
+                do_email_generate
+                do_period_comments_generate
+                do_periods_process
+                ]
+          end
+
+          def comment_regexp
+# Keep ')' here:
+            @comment_regexp_value ||= ::Regexp.new(/#.*+$/)
+          end
+
+          def comments_sequentialize(comments)
+## Add a sequence field, because Ruby's Array#sort doesn't guarantee
+## that it preserves order. See:
+## https://stackoverflow.com/a/15442966/1136063
+#-------------
+            seq = sequence_numbers comments
+            comments.zip(seq).each{|comment,sequence| comment.seq = sequence}
             nil
           end
 

@@ -19,20 +19,6 @@ module ::QplaylistRememberCommentsProcess
 
           private
 
-          def comment_time(comment)
-            arguments = comment.timestamp.split(' ').map(&:to_i)
-            ::Time.new(*arguments)
-          end
-
-          def comments_in_period(model, period)
-            window_start, window_end = window_start_end model, period
-            model[:comments].select do |comment|
-              time = comment_time comment
-              time >= window_start &&
-              time <= window_end
-            end
-          end
-
           def do_email_generate(model, pair)
             period, comments = pair
             commands = ::Array.new
@@ -59,6 +45,22 @@ module ::QplaylistRememberCommentsProcess
           def do_periods_process(model, _)
 ## Okay to return empty array--Commands.process can handle it:
             model[:periods_current].map{|e| [:do_period_comments_generate, e]}
+          end
+
+# Internal:
+
+          def comment_time(comment)
+            arguments = comment.timestamp.split(' ').map(&:to_i)
+            ::Time.new(*arguments)
+          end
+
+          def comments_in_period(model, period)
+            window_start, window_end = window_start_end model, period
+            model[:comments].select do |comment|
+              time = comment_time comment
+              time >= window_start &&
+              time <= window_end
+            end
           end
 
           def window_start_end(model, period)
