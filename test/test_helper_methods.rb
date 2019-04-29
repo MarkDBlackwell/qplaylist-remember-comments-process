@@ -109,10 +109,11 @@ module ::QplaylistRememberCommentsProcess
       end
 
       def impure_init_define
-        unless CommentsProcess         .const_defined? :Impure, false
+        check_ancestors = false
+        unless CommentsProcess         .const_defined? :Impure, check_ancestors
                CommentsProcess         .const_set      :Impure, Module.new
         end
-        unless CommentsProcess::Impure .const_defined? :Init,   false
+        unless CommentsProcess::Impure .const_defined? :Init,   check_ancestors
                CommentsProcess::Impure .const_set      :Init,   Module.new
         end
       end
@@ -123,7 +124,8 @@ module ::QplaylistRememberCommentsProcess
 
       def model_clear
         impure_init_define
-        CommentsProcess::Impure::Init.instance_variable_set :@model_value, nil
+        value = nil
+        CommentsProcess::Impure::Init.instance_variable_set :@model_value, value
       end
 
       def time_now

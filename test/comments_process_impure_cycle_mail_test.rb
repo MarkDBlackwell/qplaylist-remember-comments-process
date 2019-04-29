@@ -10,7 +10,7 @@ Copyright (C) 2018 Mark D. Blackwell.
 
 require_relative 'test_helper'
 require_relative 'test_helper_methods'
-#require_relative 'comments_process_impure_email_send_test'
+require_relative 'comments_process_impure_email_send_stub'
 require 'cycle_mail'
 require 'email_send'
 require 'my_file'
