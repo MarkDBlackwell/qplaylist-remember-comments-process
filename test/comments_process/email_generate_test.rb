@@ -9,11 +9,21 @@ Copyright (C) 2018 Mark D. Blackwell.
 =end
 
 require_relative '../test_helper'
-require_relative 'email_generate_test_instance_methods'
+require 'email_generate'
 
 module ::QplaylistRememberCommentsProcess
   module CommentsProcess
     class EmailGenerateTest < QplaylistRememberCommentsProcessTest
+      module InstanceMethods
+
+        def test_email_generate
+#         flunk
+        end
+
+        def test_email_generate2
+        end
+      end
+
       include InstanceMethods
     end
   end

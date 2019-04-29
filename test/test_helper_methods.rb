@@ -130,5 +130,7 @@ module ::QplaylistRememberCommentsProcess
         ::Time.new 2018, 6, 5, 14, 15
       end
     end
+
+    extend InstanceMethods
   end
 end

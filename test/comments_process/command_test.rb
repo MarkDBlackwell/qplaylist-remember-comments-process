@@ -9,11 +9,22 @@ Copyright (C) 2018 Mark D. Blackwell.
 =end
 
 require_relative '../test_helper'
-require_relative 'command_test_instance_methods'
+require 'command'
 
 module ::QplaylistRememberCommentsProcess
   module CommentsProcess
     class CommandTest < QplaylistRememberCommentsProcessTest
+      module InstanceMethods
+
+        def test_comments_sequence_numbers
+          count = 11
+          a = %w[a]*count
+          actual = Impure::Command.send :sequence_numbers, a
+          expected = count.times.to_a
+          assert_equal expected, actual
+        end
+      end
+
       include InstanceMethods
     end
   end

@@ -9,9 +9,9 @@ Copyright (C) 2018 Mark D. Blackwell.
 =end
 
 require_relative 'test_helper'
-require_relative 'test_helper_methods_instance_methods'
-require 'cycle_periods_check_module_methods'
-require 'my_file_module_methods'
+require_relative 'test_helper_methods'
+require 'cycle_periods_check'
+require 'my_file'
 
 module ::QplaylistRememberCommentsProcess
   class CommentsProcessImpureCyclePeriodsCheckTest < ::Minitest::Test

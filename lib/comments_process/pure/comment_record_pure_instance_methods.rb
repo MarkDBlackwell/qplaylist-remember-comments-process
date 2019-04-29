@@ -8,7 +8,7 @@ Copyright (C) 2018 Mark D. Blackwell.
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 =end
 
-require 'my_time_module_methods'
+require 'my_time'
 
 module ::QplaylistRememberCommentsProcess
   module CommentsProcess
@@ -55,8 +55,6 @@ module ::QplaylistRememberCommentsProcess
             Pure::MyTime.ymdhm
           end
         end
-
-        include InstanceMethods
       end
     end
   end

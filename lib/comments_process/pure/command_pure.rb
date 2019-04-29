@@ -8,8 +8,8 @@ Copyright (C) 2018 Mark D. Blackwell.
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 =end
 
-require 'email_generate_module_methods'
-require 'my_time_module_methods'
+require 'email_generate'
+require 'my_time'
 
 module ::QplaylistRememberCommentsProcess
   module CommentsProcess

@@ -8,13 +8,13 @@ Copyright (C) 2018 Mark D. Blackwell.
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 =end
 
-require 'commands_module_methods'
-require 'init_module_methods'
+require 'commands'
+require 'init'
 
 module ::QplaylistRememberCommentsProcess
   module CommentsProcess
     module Impure
-      module CyclePeriodsCheck
+      module CycleMail
         module ModuleMethods
 
           def init
@@ -32,17 +32,19 @@ module ::QplaylistRememberCommentsProcess
 
           def commands_initial
             list = ::Array.new
+            list.push [:do_comments_read,           ::Array.new]
             list.push [:do_periods_load_and_filter, ::Array.new]
+            list.push [:do_periods_process,         ::Array.new]
           end
 
           def envelope_stop
-            no_periods_match = 3
-            ::Kernel.exit no_periods_match
+            no_emails_sent = 2
+            ::Kernel.exit no_emails_sent
             nil
           end
 
           def exit_error_possibly
-            envelope_stop if Commands.model[:periods_current].empty?
+            envelope_stop unless Commands.model[:email_sent_count] > 0
             nil
           end
         end

@@ -8,8 +8,8 @@ Copyright (C) 2018 Mark D. Blackwell.
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 =end
 
-require 'comments_by_timestamp_hash_instance_methods'
-require 'helper_module_methods'
+require 'comments_by_timestamp_hash'
+require 'helper'
 
 module ::QplaylistRememberCommentsProcess
   module CommentsProcess

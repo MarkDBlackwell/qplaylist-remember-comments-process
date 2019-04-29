@@ -9,9 +9,9 @@ Copyright (C) 2018 Mark D. Blackwell.
 =end
 
 require_relative 'test_helper'
-require_relative 'test_helper_methods_instance_methods'
-require 'my_file_module_methods'
-require 'set_up_module_methods'
+require_relative 'test_helper_methods'
+require 'my_file'
+require 'set_up'
 
 module ::QplaylistRememberCommentsProcess
   class CommentsProcessImpureSetUpTest < QplaylistRememberCommentsProcessTest

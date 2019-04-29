@@ -9,7 +9,7 @@ Copyright (C) 2018 Mark D. Blackwell.
 =end
 
 require_relative 'comments_process_load_path'
-require 'cycle_mail_module_methods'
+require 'cycle_mail'
 
 module ::QplaylistRememberCommentsProcess
   module CommentsProcess

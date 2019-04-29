@@ -36,8 +36,6 @@ module ::QplaylistRememberCommentsProcess
             '' # During test development, avoid puzzlement.
           end
         end
-
-        include InstanceMethods
       end
     end
   end

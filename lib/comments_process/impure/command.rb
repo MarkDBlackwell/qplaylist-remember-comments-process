@@ -8,12 +8,12 @@ Copyright (C) 2018 Mark D. Blackwell.
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 =end
 
-require 'command_pure_module_methods'
-require 'comment_record_instance_methods'
-require 'email_send_module_methods'
-require 'helper_module_methods'
-require 'logger_module_methods'
-require 'my_file_module_methods'
+require 'command_pure'
+require 'comment_record'
+require 'email_send'
+require 'helper'
+require 'logger'
+require 'my_file'
 require 'period_record'
 
 module ::QplaylistRememberCommentsProcess

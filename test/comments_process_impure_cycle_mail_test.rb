@@ -9,11 +9,11 @@ Copyright (C) 2018 Mark D. Blackwell.
 =end
 
 require_relative 'test_helper'
-require_relative 'test_helper_methods_instance_methods'
-#require_relative 'comments_process_impure_email_send_test_module_methods'
-require 'cycle_mail_module_methods'
-require 'email_send_module_methods'
-require 'my_file_module_methods'
+require_relative 'test_helper_methods'
+#require_relative 'comments_process_impure_email_send_test'
+require 'cycle_mail'
+require 'email_send'
+require 'my_file'
 
 module ::QplaylistRememberCommentsProcess
   class CommentsProcessImpureCycleMailTest < QplaylistRememberCommentsProcessTest

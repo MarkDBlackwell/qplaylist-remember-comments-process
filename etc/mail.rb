@@ -12,7 +12,7 @@ Copyright (C) 2018 Mark D. Blackwell.
 For Qplaylist Remember Songs Comments Process
 =end
 
-require_relative 'methods_module_methods'
+require_relative 'methods'
 
 module ::Command
   extend Methods::ModuleMethods

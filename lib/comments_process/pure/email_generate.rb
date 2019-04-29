@@ -9,9 +9,9 @@ Copyright (C) 2018 Mark D. Blackwell.
 =end
 
 require 'email_record'
-require 'helper_module_methods'
-require 'my_time_module_methods'
-require 'songs_hash_instance_methods'
+require 'helper'
+require 'my_time'
+require 'songs_hash'
 
 module ::QplaylistRememberCommentsProcess
   module CommentsProcess
