@@ -8,6 +8,10 @@ Copyright (C) 2018 Mark D. Blackwell.
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 =end
 
+require_relative 'test_helper'
+
+# TODO: use a class here? Test things?
+
 module ::QplaylistRememberCommentsProcess
   module CommentsProcess
     module Impure
