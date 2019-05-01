@@ -23,7 +23,7 @@ module ::QplaylistRememberCommentsProcess
           end
 
           def run
-            Commands.process commands_initial
+            Commands.commands_process commands_initial
             exit_error_possibly
             nil
           end
@@ -32,9 +32,11 @@ module ::QplaylistRememberCommentsProcess
 
           def commands_initial
             list = ::Array.new
-            list.push [:do_comments_read,           ::Array.new]
-            list.push [:do_periods_load_and_filter, ::Array.new]
-            list.push [:do_periods_process,         ::Array.new]
+            list.push [:do_comments_read,    ::Array.new]
+            list.push [:do_comments_process, ::Array.new]
+            list.push [:do_periods_load,     ::Array.new]
+            list.push [:do_periods_filter,   ::Array.new]
+            list.push [:do_periods_process,  ::Array.new]
           end
 
           def envelope_stop

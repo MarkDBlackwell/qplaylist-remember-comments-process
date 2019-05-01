@@ -24,6 +24,9 @@ module ::QplaylistRememberCommentsProcess
 
         private
 
+        def data
+        end
+
         def expected
           [
               [:do_period_comments_generate, 'a' ],

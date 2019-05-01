@@ -27,8 +27,8 @@ module ::QplaylistRememberCommentsProcess
 
           def process_single
             command = @commands.shift # FIFO stack.
-            unless command.empty?
-              @model, commands_to_add = Command.process @model, command
+            unless command.nil? || command.empty?
+              @model, commands_to_add = Command.command_process @model, command
               @commands.push(*commands_to_add)
             end
             nil

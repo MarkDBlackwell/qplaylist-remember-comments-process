@@ -23,7 +23,7 @@ module ::QplaylistRememberCommentsProcess
           end
 
           def run
-            Commands.process commands_initial
+            Commands.commands_process commands_initial
             exit_error_possibly
             nil
           end

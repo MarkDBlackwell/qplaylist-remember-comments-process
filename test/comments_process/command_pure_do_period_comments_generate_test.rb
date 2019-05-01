@@ -17,6 +17,8 @@ module ::QplaylistRememberCommentsProcess
       module InstanceMethods
 
         def test_do_period_comments_generate
+#         actual = Pure::CommandPure.send :do_period_comments_generate, model, data
+#         assert_equal expected, actual
         end
 
         def test_do_period_comments_generate_empty
@@ -47,7 +49,7 @@ module ::QplaylistRememberCommentsProcess
               bobsmith@example.com
               ]
           period_line = period_array.join ' '
-          period = Pure::PeriodRecord.new period_line
+          Pure::PeriodRecord.new period_line
         end
 
         def expected
