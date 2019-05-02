@@ -28,7 +28,7 @@ module ::QplaylistRememberCommentsProcess
         end
 
         def command_run(array, is_tentative=false)
-          ::Kernel.system *array
+          ::Kernel.system(*array)
           message = "#{array} exit status was #{child_status}"
           unless command_ran_well_enough is_tentative
             print "#{message}\n\n"
@@ -77,13 +77,11 @@ module ::QplaylistRememberCommentsProcess
           email = 'markdblackwell01@gmail.com'
           program = ::File.split($PROGRAM_NAME).last
           year = '2018'
-          message = "#{program}  " \
+          "#{program}  " \
               "Copyright (C) #{year}  #{author} <#{email}>, " \
               "all rights reserved.\n" \
               "This program comes with ABSOLUTELY NO WARRANTY. " \
               "For details, see LICENSE.txt.\n"
-          print message
-          nil
         end
 
         def project_root

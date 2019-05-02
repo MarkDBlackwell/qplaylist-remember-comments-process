@@ -19,7 +19,7 @@ module ::QplaylistRememberCommentsProcess
     extend Methods
 
 # Greet:
-    greeting_at_opening
+    print greeting_at_opening
 
 # Navigate to run Bundler:
     ::Dir.chdir project_root

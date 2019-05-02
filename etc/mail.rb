@@ -16,7 +16,7 @@ require_relative 'methods'
 
 module ::QplaylistRememberCommentsProcess
   module CommandLine
-    extend Methods::ModuleMethods
+    extend Methods
 
 # Don't greet.
 
@@ -37,8 +37,8 @@ module ::QplaylistRememberCommentsProcess
     confirm_ftp_command_file_exists filename
 
 # Retrieve listener comments:
-    argument_ftp = "-s:#{filename}"
-    command_run %w[ftp] + [argument_ftp]
+    ftp_argument = "-s:#{filename}"
+    command_run %w[ftp] + [ftp_argument]
 
     ::Kernel.exit child_status_integer unless command_ran_best
 

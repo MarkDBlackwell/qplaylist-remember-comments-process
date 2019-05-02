@@ -8,7 +8,8 @@ Copyright (C) 2018 Mark D. Blackwell.
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 =end
 
-require_relative 'test_helper_minitest'
+require_relative '../test_helper_minitest'
+require_relative 'command_line_test_helper_methods'
 require 'pp'
 
 module ::QplaylistRememberCommentsProcess

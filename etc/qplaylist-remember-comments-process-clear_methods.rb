@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+# coding: utf-8
 
 =begin
 Copyright (C) 2018 Mark D. Blackwell.
@@ -8,18 +8,21 @@ Copyright (C) 2018 Mark D. Blackwell.
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 =end
 
-=begin
-Delete comments, for Qplaylist Remember Songs Comments Process
-=end
-
-require_relative '../etc/qplaylist-remember-comments-process-clear_methods'
+require_relative 'methods'
 
 module ::QplaylistRememberCommentsProcess
   module CommandLine
+    extend Methods
+    extend self
 
-    ftp_argument = altered_for_testing
+    def altered_for_testing
+      print greeting_at_opening # Greet.
 
-# Clear listener comments from the webserver computer:
-    command_run %w[ftp] + [ftp_argument]
+      filename = filename_command_ftp 'delete'
+
+      confirm_ftp_command_file_exists filename
+
+      "-s:#{filename}"
+    end
   end
 end
