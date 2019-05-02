@@ -22,8 +22,8 @@ module ::QplaylistRememberCommentsProcess
         end
 
         def test_do_period_comments_generate_empty
-          expected = expected_empty
-          model = model_empty
+#         expected = expected_empty
+#         model = model_empty
 =begin
           model_empty = ::Hash.new
 

@@ -9,6 +9,7 @@ Copyright (C) 2018 Mark D. Blackwell.
 =end
 
 require_relative 'test_helper_minitest'
+require_relative 'test_helper_stub'
 require 'pp'
 
 dirname_file_current = ::Kernel.__dir__

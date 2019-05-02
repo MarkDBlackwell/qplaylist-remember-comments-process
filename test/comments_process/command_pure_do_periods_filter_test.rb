@@ -17,7 +17,7 @@ module ::QplaylistRememberCommentsProcess
       module InstanceMethods
 
         def test_do_periods_filter
-          data = nil
+#         data = nil
 #         actual = Pure::CommandPure.send :do_periods_filter, model, data
 #         assert_equal expected, actual
         end

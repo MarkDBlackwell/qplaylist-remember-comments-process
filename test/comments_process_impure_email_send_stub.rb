@@ -8,8 +8,6 @@ Copyright (C) 2018 Mark D. Blackwell.
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 =end
 
-require_relative 'test_helper'
-
 # TODO: Is this still needed, for safety?
 
 module ::QplaylistRememberCommentsProcess
@@ -17,6 +15,8 @@ module ::QplaylistRememberCommentsProcess
     module Impure
       module EmailSend
         module ModuleMethods
+
+          private
 
           def connect_and_send(*args)
           end

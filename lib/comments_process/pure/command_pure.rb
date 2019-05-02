@@ -68,7 +68,7 @@ module ::QplaylistRememberCommentsProcess
             model.delete(:periods_current).map{|e| [:do_period_comments_generate, e]}
           end
 
-# Internal:
+          protected
 
           def comment_regexp
 # Keep ')' here:

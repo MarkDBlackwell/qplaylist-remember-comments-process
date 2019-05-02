@@ -62,7 +62,7 @@ module ::QplaylistRememberCommentsProcess
             commands
           end
 
-# Internal:
+          protected
 
           def commands_pure
 # Keep alphabetized:
