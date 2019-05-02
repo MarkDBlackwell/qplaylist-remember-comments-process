@@ -14,24 +14,26 @@ Set up, for Qplaylist Remember Songs Comments Process
 
 require_relative '../etc/methods'
 
-module ::Command
-  extend Methods
+module ::QplaylistRememberCommentsProcess
+  module CommandLine
+    extend Methods
 
 # Greet:
-  greeting_at_opening
+    greeting_at_opening
 
 # Navigate to run Bundler:
-  ::Dir.chdir project_root
+    ::Dir.chdir project_root
 
 # Install necessary gems:
 ## 'bundle install --without development test' is failing to exclude those dependencies:
 ##command_run %w[bundle install --without development test]
-  command_run %w[bundle install]
+    command_run %w[bundle install]
 
-  ::Kernel.exit child_status_integer unless command_ran_best
+    ::Kernel.exit child_status_integer unless command_ran_best
 
 # Run the setup program:
-  command_run %w[bundle exec ruby] + [filename_program_set_up]
+    command_run %w[bundle exec ruby] + [filename_program_set_up]
 
-  ::Kernel.exit child_status_integer unless command_ran_best
+    ::Kernel.exit child_status_integer unless command_ran_best
+  end
 end
