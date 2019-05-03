@@ -13,6 +13,14 @@ require 'English'
 module ::QplaylistRememberCommentsProcess
   module CommandLine
     module Methods
+
+=begin
+        def child_status_integer
+print "In Method's child_status_integer\n"
+          child_status.exitstatus if child_status
+        end
+=end
+
       module ModuleMethods
 
         def child_status
@@ -20,10 +28,13 @@ module ::QplaylistRememberCommentsProcess
         end
 
         def child_status_integer
+print "In moduleMethod's child_status_integer\n"
           child_status.exitstatus if child_status
         end
 
         def command_ran_best
+print "In moduleMethod's command_ran_best\n"
+#print 'child_status_integer='; pp child_status_integer
           exit_status_okay == child_status_integer
         end
 
@@ -156,9 +167,13 @@ module ::QplaylistRememberCommentsProcess
         def name_package
           'comments_process'
         end
+
+#       extend self
+
       end
 
-      include ModuleMethods
+      extend ModuleMethods
+#     include ModuleMethods
     end
   end
 end
