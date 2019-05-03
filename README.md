@@ -19,7 +19,8 @@ I'll call this account the "Remember Songs Daemon" email account.
 You must tell Google to allow (what Google calls)
 "less secure access" to it (by programs).
 
-Google says, at the bottom of [this help page](https://support.google.com/a/answer/6260879):
+Google says, at the bottom of
+[this help page](http://support.google.com/a/answer/6260879):
 
 * "Access to less secure applications is allowed for first 24 hours after a new user is created[,]
 even if either the admin-level or user-level setting has been set to disallowed.
@@ -31,7 +32,7 @@ Therefore, you must ensure that this gem successfully sends its first email
 within 24 hours of the email account's creation.
 
 Install Ruby, version 2.2.5-p319, from the .exe file (regular or 64-bit) in the
-[RubyInstaller.org archives](https://rubyinstaller.org/downloads/archives/),
+[RubyInstaller.org archives](http://rubyinstaller.org/downloads/archives/),
 to the directory C:\Ruby.
 
 * Select the option to install Tcl/Tk support.
@@ -65,7 +66,7 @@ install: --no-document
 ````
 
 Download version 2.7.4 of the gem "rubygems-update" by navigating in a web browser to its
-[description page](https://rubygems.org/gems/rubygems-update/versions/2.7.4)
+[description page](http://rubygems.org/gems/rubygems-update/versions/2.7.4)
 and clicking the word, "Download".
 
 In the command window, navigate to your download directory, and do:

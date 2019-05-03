@@ -41,7 +41,7 @@ gem_name = 'qplaylist-remember-comments-process'
   s.files += ::Dir.glob '*.gemspec'
   s.files -= ::Dir.glob '**/.gitkeep'
   s.files = s.files.sort
-  s.homepage                      = 'https://will-be-on-GitHub.example.com'
+  s.homepage                      = 'http://will-be-on-GitHub.example.com'
   s.license                       = 'Nonstandard'
   s.metadata['allowed_push_host'] = 'https://rubygems.org'
   s.name                          = gem_name
@@ -70,7 +70,7 @@ gem_name = 'qplaylist-remember-comments-process'
   s.add_dependency 'gmail', '0.6.0'
 
 # Per:
-# https://github.com/bundler/bundler/issues/4131
+# http://github.com/bundler/bundler/issues/4131
 # http://stackoverflow.com/questions/17717529/teamcity-rake-runner-incompatible-with-test-unit-2-0-0-0
 
 # If we need a gem which is built-into Ruby, then:

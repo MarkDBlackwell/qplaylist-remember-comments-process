@@ -13,8 +13,8 @@ require 'minitest/pride'
 
 =begin
 For command-line flags, see:
-  https://chriskottom.com/blog/2014/12/command-line-flags-for-minitest-in-the-raw/
+  http://chriskottom.com/blog/2014/12/command-line-flags-for-minitest-in-the-raw/
 
 For stubbing and mocking, see:
-  https://semaphoreci.com/community/tutorials/mocking-in-ruby-with-minitest
+  http://semaphoreci.com/community/tutorials/mocking-in-ruby-with-minitest
 =end

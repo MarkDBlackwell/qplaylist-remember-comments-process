@@ -10,8 +10,8 @@ Copyright (C) 2018 Mark D. Blackwell.
 
 =begin
  See:
-https://github.com/gmailgem/gmail
-https://github.com/nfo/gmail_xoauth
+http://github.com/gmailgem/gmail
+http://github.com/nfo/gmail_xoauth
 =end
 
 require 'gmail'
