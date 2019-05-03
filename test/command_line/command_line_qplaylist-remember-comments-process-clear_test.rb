@@ -39,6 +39,19 @@ module ::QplaylistRememberCommentsProcess
         command_run_mock.verify
       end
 
+      def test_kernel_system
+        ::    QplaylistRememberCommentsProcess::CommandLine.stub :confirm_ftp_command_file_exists, confirm_ftp_command_file_exists do
+          ::  QplaylistRememberCommentsProcess::CommandLine.stub :filename_command_ftp,            filename_command_ftp            do
+            ::QplaylistRememberCommentsProcess::CommandLine.stub :greeting_at_opening,             greeting_at_opening             do
+              ::Kernel.                                     stub :system,                          kernel_system_mock              do
+                ::Kernel.load filename
+              end
+            end
+          end
+        end
+        kernel_system_mock.verify
+      end
+
       private
 
       def altered_for_testing
@@ -78,8 +91,22 @@ module ::QplaylistRememberCommentsProcess
         ::File.expand_path basename, directory_exe
       end
 
+      def filename_command_ftp
+        'comments-delete.ftp'
+      end
+
       def greeting_at_opening
         nil
+      end
+
+      def kernel_system_mock
+        @kernel_system_mock_value ||= begin
+          return_value = true
+          parameter_first = 'ftp'
+          parameter_second = "-s:#{filename_command_ftp}"
+          params = [parameter_first, parameter_second]
+          ::Minitest::Mock.new.expect :call, return_value, params
+        end
       end
     end
   end
