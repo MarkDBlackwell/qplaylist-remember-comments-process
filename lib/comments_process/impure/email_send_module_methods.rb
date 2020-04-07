@@ -9,6 +9,7 @@ Copyright (C) 2018 Mark D. Blackwell.
 =end
 
 require 'gmail'
+require 'logger_module_methods'
 
 module ::QplaylistRememberCommentsProcess
   module CommentsProcess
@@ -34,6 +35,7 @@ module ::QplaylistRememberCommentsProcess
           private
 
           def connect_and_send(email, address, address_reply_to, password)
+            begin
             ::Gmail.connect!(address, password) do |gmail|
               message = gmail.compose do
                 reply_to address_reply_to
@@ -42,6 +44,10 @@ module ::QplaylistRememberCommentsProcess
                 body email.body.chomp
               end
               message.deliver!
+            end
+            rescue => exception
+              Logger.log_write "Gmail::Client: #{exception.message}"
+              raise
             end
             nil
           end
